@@ -1,4 +1,4 @@
-Feature: Check the input field for boundary values
+Feature: Project name length is 1-250 values
 
   Background:
     Given browser is started
