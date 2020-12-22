@@ -1,11 +1,9 @@
 Feature: User adds a new project
 
-  Background:
+  Scenario: Add a new project
     Given browser is started
     * user is logged into TestRail
     * Dashboard page is opened
-
-  Scenario: Add a new project
     When user clicks Add Project button
     * user selects 'Name' field and inputs "Test project"
     * user selects 'Announcement' field and inputs "Marina and Natasha created this project"
