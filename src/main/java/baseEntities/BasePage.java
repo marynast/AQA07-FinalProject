@@ -1,6 +1,6 @@
 package baseEntities;
 
-import browserService.ReadProperties;
+import utils.ReadProperties;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
