@@ -11,4 +11,4 @@ Feature: User adds a new project
     * user selects radio button 1 'Use a single repository for all cases'
     * user clicks Add Project button in the bottom of the page
     Then text "Successfully added the new project." is displayed
-    * project "Test project" is displayed in the list pf projects
+    * project "Test project" is displayed in the list of projects
