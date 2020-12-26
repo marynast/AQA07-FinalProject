@@ -12,8 +12,8 @@ public class LoginPage extends BasePage {
     private By PASSWORD_FIELD = By.id("password");
     private By LOG_IN_BUTTON = By.id("button_primary");
 
-    public LoginPage(WebDriver driver) {
-        super(driver, true);
+    public LoginPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override
