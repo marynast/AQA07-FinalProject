@@ -24,7 +24,7 @@ public class BrowserStep extends BaseStep {
 
     @Given("browser is started")
     public void browserIsStarted() {
-        driver.get("");
+        driver.get(new ReadProperties().getURL());
     }
 
 }
