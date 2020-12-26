@@ -1,5 +1,7 @@
 package steps.api;
 
+import io.cucumber.java.BeforeStep;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.protocol.HTTP;
@@ -12,6 +14,7 @@ public abstract class BaseApiStep {
     public ReadProperties properties;
 
     @BeforeTest
+    @Step
     public void setUp() {
         properties = new ReadProperties();
 
