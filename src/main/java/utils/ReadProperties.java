@@ -34,4 +34,8 @@ public class ReadProperties {
     public String getPassword() {
         return properties.getProperty("psw");
     }
+
+    public String getApiURL() {
+        return properties.getProperty("apiURL");
+    }
 }

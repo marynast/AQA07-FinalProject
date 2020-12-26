@@ -1,4 +1,4 @@
-package steps;
+package steps.ui;
 
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

@@ -1,8 +1,9 @@
-package steps;
+package steps.ui;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
+import steps.ui.BaseStep;
 import support.MyWebDriver;
 import utils.ReadProperties;
 
