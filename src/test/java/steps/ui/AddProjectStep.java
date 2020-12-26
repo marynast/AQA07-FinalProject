@@ -23,7 +23,6 @@ public class AddProjectStep extends BaseStep {
     public void userClicksAddProjectButton() {
         DashboardPage dashboardPage = new DashboardPage(driver, true);
         dashboardPage.getProjectButton().click();
-
     }
 
     @When("user selects {string} field and inputs {string}")

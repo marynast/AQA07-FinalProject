@@ -9,7 +9,7 @@ import utils.ReadProperties;
 public class DashboardPage extends BasePage {
 
     public String ENDPOINT = "/index.php?/dashboard";
-    public By  ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
+    public By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
 
     public DashboardPage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
