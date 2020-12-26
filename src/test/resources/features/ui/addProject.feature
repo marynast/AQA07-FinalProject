@@ -1,6 +1,6 @@
-Feature: User adds a new project
+Feature: Adding a new project
 
-  Scenario: Add a new project
+  Scenario: User adds a new project
     Given browser is started
     * user is logged into TestRail
     * Dashboard page is opened
