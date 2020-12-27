@@ -9,18 +9,15 @@ import utils.ReadProperties;
 public class DashboardPage extends BasePage {
 
     public String ENDPOINT = "/index.php?/dashboard";
-    public By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
+    private static By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
 
-    public DashboardPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+    public DashboardPage(WebDriver driver) {
+        super(driver, true);
     }
-
-
 
     @Override
     protected void openPage() {
         driver.get(new ReadProperties().getURL() + ENDPOINT);
-
     }
 
     @Override

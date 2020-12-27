@@ -11,16 +11,16 @@ import support.MyWebDriver;
 
 public class AddProjectStep extends BaseStep {
 
-    public AddProjectStep(MyWebDriver driver) {
-        super(driver);
+    public AddProjectStep(MyWebDriver webDriver) {
+        super(webDriver);
     }
-    DashboardPage dashboardPage = new DashboardPage(driver, true);
-    AddProjectPage addProjectPage = new AddProjectPage(driver, true);
+    DashboardPage dashboardPage = new DashboardPage(driver);
+    AddProjectPage addProjectPage = new AddProjectPage(driver);
     ProjectsPage projectsPage = new ProjectsPage(driver, false);
 
     @Given("Dashboard page is opened")
     public void dashboardPageIsOpened() {
-        DashboardPage dashboardPage = new DashboardPage(driver, true);
+        DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPageIsOpened();
     }
 

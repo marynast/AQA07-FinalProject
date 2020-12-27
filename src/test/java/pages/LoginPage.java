@@ -8,12 +8,12 @@ import utils.ReadProperties;
 
 public class LoginPage extends BasePage {
 
-    private By LOGIN_FIELD = By.id("name");
-    private By PASSWORD_FIELD = By.id("password");
-    private By LOG_IN_BUTTON = By.id("button_primary");
+    private static By LOGIN_FIELD = By.id("name");
+    private static By PASSWORD_FIELD = By.id("password");
+    private static By LOG_IN_BUTTON = By.id("button_primary");
 
-    public LoginPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+    public LoginPage(WebDriver driver) {
+        super(driver, true);
     }
 
     @Override

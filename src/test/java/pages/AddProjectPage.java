@@ -14,8 +14,8 @@ public class AddProjectPage extends BasePage {
     private By ADD_PROJECT = By.xpath("//button[@id='accept']");
     private By RADIO_RECOMMENDED = By.xpath("//div[@class='radio']/label/input[@id='suite_mode_single']");
 
-    public AddProjectPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+    public AddProjectPage(WebDriver driver) {
+        super(driver, true);
     }
 
     @Override

@@ -2,23 +2,23 @@ package steps.ui;
 
 import io.cucumber.java.en.Given;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.MyWebDriver;
+import utils.ReadProperties;
 
 public class LoginStep extends BaseStep {
-    private WebDriver driver;
 
-    public LoginStep(MyWebDriver driver) {
-        super(driver);
+    public LoginStep(MyWebDriver webDriver) {
+        super(webDriver);
     }
 
     @Step
     @Given("user is logged into TestRail")
-    public void userIsLoggedIntoTestRail(String username, String psw) {
-        LoginPage loginPage = new LoginPage(driver, true);
-        loginPage.getLogin().sendKeys(username);
-        loginPage.getPassword().sendKeys(psw);
+    public void userIsLoggedIntoTestRail() {
+        ReadProperties readProperties = new ReadProperties();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.getLogin().sendKeys(readProperties.getUsername());
+        loginPage.getPassword().sendKeys(readProperties.getPassword());
         loginPage.getLogInButton().click();
     }
 }
