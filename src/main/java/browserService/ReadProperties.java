@@ -27,6 +27,10 @@ public class ReadProperties {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
 
+    public int getTimeOut() {
+        return Integer.parseInt(properties.getProperty("timeout"));
+    }
+
     public String getUsername() {
         return properties.getProperty("username");
     }
