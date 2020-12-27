@@ -1,5 +1,6 @@
 package steps.api;
 
+import baseEntities.BaseUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,6 +8,7 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
 import browserService.ReadProperties;
@@ -14,7 +16,7 @@ import browserService.ReadProperties;
 import static io.restassured.RestAssured.*;
 
 
-public class ApiStep {
+public class ApiStep extends BaseUtil {
     public ReadProperties properties;
     private String endpoint;
     private String currentUser;
@@ -32,11 +34,15 @@ public class ApiStep {
     }
 
     @Step
-    @When("admin sends GET request to {string}")
-    public void adminSendsGETRequestTo(String endpoint) {
-        this.endpoint = endpoint;
+    @When("admin sends GET request to get the list of Projects")
+    public void adminSendsGETRequest() {
+        String endpoint = "/index.php?/api/v2/get_projects";
         given()
-                .when().get(endpoint);
+                .when()
+                .get(endpoint)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK);
     }
 
     @Step
