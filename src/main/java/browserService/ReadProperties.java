@@ -38,4 +38,28 @@ public class ReadProperties {
     public String getApiURL() {
         return properties.getProperty("apiURL");
     }
+
+    public String getDB() {
+        return properties.getProperty("db");
+    }
+
+    public String getDBName() {
+        return properties.getProperty("dbName");
+    }
+
+    public String getDBHost() {
+        return properties.getProperty("dbHost");
+    }
+
+    public String getDBPort() {
+        return properties.getProperty("dbPort");
+    }
+
+    public String getDBUsername() {
+        return properties.getProperty("dbUsername");
+    }
+
+    public String getDBPassword() {
+        return properties.getProperty("dbPassword");
+    }
 }
