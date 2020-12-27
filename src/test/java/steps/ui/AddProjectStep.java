@@ -3,8 +3,10 @@ package steps.ui;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import pages.AddProjectPage;
 import pages.DashboardPage;
+import pages.ProjectsPage;
 import support.MyWebDriver;
 
 public class AddProjectStep extends BaseStep {
@@ -12,6 +14,8 @@ public class AddProjectStep extends BaseStep {
     public AddProjectStep(MyWebDriver driver) {
         super(driver);
     }
+    DashboardPage dashboardPage = new DashboardPage(driver, true);
+    AddProjectPage addProjectPage = new AddProjectPage(driver, true);
 
     @Given("Dashboard page is opened")
     public void dashboardPageIsOpened() {
@@ -21,37 +25,34 @@ public class AddProjectStep extends BaseStep {
 
     @When("user clicks Add Project button")
     public void userClicksAddProjectButton() {
-        DashboardPage dashboardPage = new DashboardPage(driver, true);
         dashboardPage.getProjectButton().click();
     }
 
-    @When("user selects {string} field and inputs {string}")
-    public void userSelectsFieldAndInputs(String string, String string2) {
-
+    @When("user selects Name field and inputs {string}")
+    public void userSelectsNameFieldAndInputs(String projectName) {
+        addProjectPage.getProjectNameField().sendKeys(projectName);
     }
 
-    @When("user selects the checkbox {string}")
-    public void userSelectsTheCheckbox(String string) {
-
+    @When("user selects Announcement field and inputs {string}")
+    public void userSelectsAnnouncementFieldAndInputs(String announcementText) {
+        addProjectPage.getAnnouncementField().sendKeys(announcementText);
     }
 
-    @When("user selects radio button {int} {string}")
-    public void userSelectsRadioButton(Integer int1, String string) {
-
+    @When("user selects radio button {int}")
+    public void userSelectsRadioButton(int radioButton) {
+        addProjectPage.getRadioButtonRecommended();
     }
 
     @When("user clicks Add Project button in the bottom of the page")
     public void userClicksAddProjectButtonInTheBottom() {
+        addProjectPage.getAddProjectButton().submit();
 
     }
 
     @Then("text {string} is displayed")
-    public void textIsDisplayed(String string) {
-
-    }
-
-    @Then("project {string} is displayed in the list of projects")
-    public void projectIsDisplayedInTheListOfProjects(String string) {
-
+    public void textIsDisplayed(String expectedText) {
+        Assert.assertEquals(new ProjectsPage(driver, false).getProjectAddedMessage(),
+                expectedText,
+                "Project was NOT added");
     }
 }
