@@ -21,4 +21,6 @@ public class LoginStep extends BaseStep {
         loginPage.getPassword().sendKeys(readProperties.getPassword());
         loginPage.getLogInButton().click();
     }
+
+
 }

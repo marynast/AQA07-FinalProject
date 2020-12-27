@@ -10,6 +10,7 @@ public abstract class BasePage {
 
 
     protected abstract void openPage();
+
     public abstract boolean isPageOpened();
 
     public BasePage(WebDriver driver, boolean openPageByUrl) {
