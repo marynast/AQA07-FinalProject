@@ -16,6 +16,7 @@ public class AddProjectStep extends BaseStep {
     }
     DashboardPage dashboardPage = new DashboardPage(driver, true);
     AddProjectPage addProjectPage = new AddProjectPage(driver, true);
+    ProjectsPage projectsPage = new ProjectsPage(driver, false);
 
     @Given("Dashboard page is opened")
     public void dashboardPageIsOpened() {
