@@ -4,7 +4,7 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utils.ReadProperties;
+import browserService.ReadProperties;
 
 public class ProjectsPage extends BasePage {
 
@@ -25,6 +25,8 @@ public class ProjectsPage extends BasePage {
             "/a[@class='button button-ok button-left button-positive dialog-action-default']");
 
     private By PROJECT_ADDED_MESSAGE = By.xpath("//div[text()='Successfully added the new project.']");
+
+    private static By PROJECT_DELETED_MESSAGE = By.xpath("//div[text()='Successfully deleted the project.']");
 
     @Override
     protected void openPage() {
@@ -50,5 +52,9 @@ public class ProjectsPage extends BasePage {
 
     public String getProjectAddedMessage() {
         return driver.findElement(PROJECT_ADDED_MESSAGE).getText();
+    }
+
+    public String getProjectDeletedMessage() {
+        return driver.findElement(PROJECT_DELETED_MESSAGE).getText();
     }
 }

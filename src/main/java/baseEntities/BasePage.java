@@ -1,7 +1,6 @@
 package baseEntities;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.ReadProperties;
+import browserService.ReadProperties;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
@@ -16,7 +15,6 @@ public abstract class BasePage {
     public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
         readProperties =  new ReadProperties();
-
 
         if (openPageByUrl) {
             openPage();

@@ -9,9 +9,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
-import utils.ReadProperties;
+import browserService.ReadProperties;
 
-import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
 
 

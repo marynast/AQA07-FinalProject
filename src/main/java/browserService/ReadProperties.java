@@ -1,4 +1,4 @@
-package utils;
+package browserService;
 
 import java.io.IOException;
 import java.util.Properties;

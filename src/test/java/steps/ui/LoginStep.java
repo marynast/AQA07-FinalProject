@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.qameta.allure.Step;
 import pages.LoginPage;
 import support.MyWebDriver;
-import utils.ReadProperties;
+import browserService.ReadProperties;
 
 public class LoginStep extends BaseStep {
 
