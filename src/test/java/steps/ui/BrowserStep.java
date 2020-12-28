@@ -1,10 +1,10 @@
-package steps;
+package steps.ui;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import support.MyWebDriver;
-import utils.ReadProperties;
+import browserService.ReadProperties;
 
 
 public class BrowserStep extends BaseStep {

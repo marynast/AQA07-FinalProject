@@ -1,4 +1,4 @@
-package utils;
+package browserService;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -27,11 +27,43 @@ public class ReadProperties {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
 
+    public int getTimeOut() {
+        return Integer.parseInt(properties.getProperty("timeout"));
+    }
+
     public String getUsername() {
         return properties.getProperty("username");
     }
 
     public String getPassword() {
         return properties.getProperty("psw");
+    }
+
+    public String getApiURL() {
+        return properties.getProperty("apiURL");
+    }
+
+    public String getDB() {
+        return properties.getProperty("db");
+    }
+
+    public String getDBName() {
+        return properties.getProperty("dbName");
+    }
+
+    public String getDBHost() {
+        return properties.getProperty("dbHost");
+    }
+
+    public String getDBPort() {
+        return properties.getProperty("dbPort");
+    }
+
+    public String getDBUsername() {
+        return properties.getProperty("dbUsername");
+    }
+
+    public String getDBPassword() {
+        return properties.getProperty("dbPassword");
     }
 }
