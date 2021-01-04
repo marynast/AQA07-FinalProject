@@ -1,15 +1,25 @@
 package steps.ui;
 
+import dataBaseService.DataBaseService;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import support.MyWebDriver;
 import browserService.ReadProperties;
+
+import java.sql.SQLException;
 
 
 public class BrowserStep extends BaseStep {
     public BrowserStep(MyWebDriver driver) {
         super(driver);
+    }
+
+    @BeforeTest
+    public void setUpConnection(){
+        dataBaseService = new DataBaseService();
     }
 
     @Before
@@ -27,5 +37,9 @@ public class BrowserStep extends BaseStep {
         driver.get(new ReadProperties().getURL());
     }
 
+    @AfterTest
+    public void closeConnection() throws SQLException {
+        dataBaseService.closeConnection();
+    }
 }
 
