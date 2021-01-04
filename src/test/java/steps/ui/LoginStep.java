@@ -8,8 +8,8 @@ import browserService.ReadProperties;
 
 public class LoginStep extends BaseStep {
 
-    public LoginStep(MyWebDriver webDriver) {
-        super(webDriver);
+    public LoginStep(MyWebDriver driver) {
+        super(driver);
     }
 
     @Step
@@ -20,6 +20,7 @@ public class LoginStep extends BaseStep {
         loginPage.getLogin().sendKeys(readProperties.getUsername());
         loginPage.getPassword().sendKeys(readProperties.getPassword());
         loginPage.getLogInButton().click();
+
     }
 
 

@@ -1,32 +1,18 @@
 package steps.ui;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pages.AddProjectPage;
-import pages.DashboardPage;
 import pages.ProjectsPage;
 import support.MyWebDriver;
 
 public class AddProjectStep extends BaseStep {
 
-    public AddProjectStep(MyWebDriver webDriver) {
-        super(webDriver);
-    }
-    DashboardPage dashboardPage = new DashboardPage(driver);
     AddProjectPage addProjectPage = new AddProjectPage(driver);
-    ProjectsPage projectsPage = new ProjectsPage(driver, false);
 
-    @Given("Dashboard page is opened")
-    public void dashboardPageIsOpened() {
-        DashboardPage dashboardPage = new DashboardPage(driver);
-        dashboardPageIsOpened();
-    }
-
-    @When("user clicks Add Project button")
-    public void userClicksAddProjectButton() {
-        dashboardPage.getProjectButton().click();
+    public AddProjectStep(MyWebDriver driver) {
+        super(driver);
     }
 
     @When("user selects Name field and inputs {string}")

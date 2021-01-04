@@ -2,20 +2,22 @@ package baseEntities;
 
 import browserService.ReadProperties;
 import org.openqa.selenium.WebDriver;
+import utils.Waiters;
 
 public abstract class BasePage {
     protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 5;
     public final WebDriver driver;
     public final ReadProperties readProperties;
+    public final Waiters waiters;
 
 
     protected abstract void openPage();
-
     public abstract boolean isPageOpened();
 
     public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
         readProperties =  new ReadProperties();
+        this.waiters = new Waiters(driver);
 
         if (openPageByUrl) {
             openPage();
