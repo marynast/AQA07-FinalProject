@@ -14,25 +14,24 @@ public class DashboardPage extends BasePage {
     private static By TOOLTIP_TEXT = By.xpath("//a[tooltip-text='Change the time frame for the chart.']");
 
     public DashboardPage(WebDriver driver) {
-        super(driver, true);
+        super(driver,false );
     }
 
     @Override
     protected void openPage() {
-        driver.get(new ReadProperties().getURL() + ENDPOINT);
     }
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(ADD_PROJECT_BUTTON).isDisplayed();
+        return waiters.isElementDisplayed(ADD_PROJECT_BUTTON);
     }
 
     public WebElement getProjectButton() {
-        return driver.findElement(ADD_PROJECT_BUTTON);
+        return waiters.getElementBy(ADD_PROJECT_BUTTON);
     }
 
     public WebElement getTooltipButton() {
-        return driver.findElement(TOOLTIP_BUTTON);
+        return waiters.getElementBy(TOOLTIP_BUTTON);
     }
 
     public String getTooltipText() {

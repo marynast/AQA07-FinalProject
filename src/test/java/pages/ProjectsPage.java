@@ -35,19 +35,19 @@ public class ProjectsPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(By.xpath("//a[text()='Projects']")).isDisplayed();
+        return waiters.isElementDisplayed(By.xpath("//a[text()='Projects']"));
     }
 
     public WebElement getDeleteProjectButton() {
-        return driver.findElement(DELETE_BUTTON);
+        return waiters.getElementBy(DELETE_BUTTON);
     }
 
     public WebElement getConfirmDeleteCheckbox() {
-        return driver.findElement(CHECKBOX_TO_CONFIRM_DELETE);
+        return waiters.getElementBy(CHECKBOX_TO_CONFIRM_DELETE);
     }
 
     public WebElement getConfirmDeleteButton() {
-        return driver.findElement(OK_DELETE_PROJECT_BUTTON);
+        return waiters.getElementBy(OK_DELETE_PROJECT_BUTTON);
     }
 
     public String getProjectAddedMessage() {

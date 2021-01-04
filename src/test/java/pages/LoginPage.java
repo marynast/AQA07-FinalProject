@@ -23,19 +23,19 @@ public class LoginPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(LOGIN_FIELD).isDisplayed();
+         return waiters.isElementDisplayed(LOG_IN_BUTTON);
     }
 
     public WebElement getLogin() {
-       return driver.findElement(LOGIN_FIELD);
+       return waiters.getElementBy(LOGIN_FIELD);
     }
 
     public WebElement getPassword() {
-        return driver.findElement(PASSWORD_FIELD);
+        return waiters.getElementBy(PASSWORD_FIELD);
     }
 
     public WebElement getLogInButton() {
-        return  driver.findElement(LOG_IN_BUTTON);
+        return  waiters.getElementBy(LOG_IN_BUTTON);
     }
 
 }

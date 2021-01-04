@@ -9,38 +9,37 @@ import browserService.ReadProperties;
 public class AddProjectPage extends BasePage {
 
     private String ENDPOINT = "/index.php?/admin/projects/add";
-    private By PROJECT_NAME = By.xpath("//input[@id='name']");
-    private By ANNOUNCEMENT = By.xpath("//textarea[@id='announcement']");
-    private By ADD_PROJECT = By.xpath("//button[@id='accept']");
+    private By PROJECT_NAME = By.id("name");
+    private By ANNOUNCEMENT = By.id("announcement");
+    private By ADD_PROJECT = By.id("accept");
     private By RADIO_RECOMMENDED = By.xpath("//div[@class='radio']/label/input[@id='suite_mode_single']");
 
     public AddProjectPage(WebDriver driver) {
-        super(driver, true);
+        super(driver, false);
     }
 
     @Override
     protected void openPage() {
-        driver.get(new ReadProperties().getURL() + ENDPOINT);
     }
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(PROJECT_NAME).isDisplayed();
+      return waiters.isElementDisplayed(By.name("name"));
     }
 
     public WebElement getProjectNameField() {
-        return driver.findElement(PROJECT_NAME);
+        return waiters.getElementBy(PROJECT_NAME);
     }
 
     public WebElement getAnnouncementField() {
-        return driver.findElement(ANNOUNCEMENT);
+        return waiters.getElementBy(ANNOUNCEMENT);
     }
 
     public boolean getRadioButtonRecommended() {
-        return driver.findElement(RADIO_RECOMMENDED).isSelected();
+        return waiters.getElementToBeSelected(RADIO_RECOMMENDED);
     }
 
     public WebElement getAddProjectButton() {
-        return driver.findElement(ADD_PROJECT);
+        return waiters.getElementBy(ADD_PROJECT);
     }
 }
