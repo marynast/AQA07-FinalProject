@@ -1,7 +1,10 @@
 package steps.ui;
 
+import io.cucumber.java.bs.A;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import models.AddProjectField;
 import org.testng.Assert;
 import pages.AddProjectPage;
 import pages.ProjectsPage;
@@ -15,25 +18,8 @@ public class AddProjectStep extends BaseStep {
         super(driver);
     }
 
-    @When("user selects Name field and inputs {string}")
-    public void userSelectsNameFieldAndInputs(String projectName) {
-        addProjectPage.getProjectNameField().sendKeys(projectName);
-    }
-
-    @When("user selects Announcement field and inputs {string}")
-    public void userSelectsAnnouncementFieldAndInputs(String announcementText) {
-        addProjectPage.getAnnouncementField().sendKeys(announcementText);
-    }
-
-    @When("user selects radio button {int}")
-    public void userSelectsRadioButton(int radioButton) {
-        addProjectPage.getRadioButtonRecommended();
-    }
-
-    @When("user clicks Add Project button in the bottom of the page")
-    public void userClicksAddProjectButtonInTheBottom() {
-        addProjectPage.getAddProjectButton().submit();
-
+    @And("project info from db where project id = {int}")
+    public void getProjectInfoFromDb ( int id) {
     }
 
     @Then("text {string} is displayed")
