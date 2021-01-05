@@ -21,6 +21,7 @@ public class ApiStep extends BaseUtil {
     private String endpoint;
     private String currentUser;
     private static Response response;
+    private int status;
 
     @Step
     @Given("api is set up")
@@ -37,18 +38,20 @@ public class ApiStep extends BaseUtil {
     @When("admin sends GET request to get the list of Projects")
     public void adminSendsGETRequest() {
         String endpoint = "/index.php?/api/v2/get_projects";
-        given()
+        this.status =
+                given()
                 .when()
                 .get(endpoint)
                 .then()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
+                .extract().response().getStatusCode();
     }
+
 
     @Step
     @Then("status code is {int}")
     public void statusCodeIs(int statusCode) {
-        Assert.assertEquals(response.getStatusCode(), statusCode, "Invalid Status Code");
+        Assert.assertEquals(status, statusCode, "Something went wrong");
     }
 
     @Step
