@@ -8,16 +8,19 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import org.apache.http.HttpStatus;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
 import browserService.ReadProperties;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 
-public class ApiStep extends BaseUtil {
+public class ApiStep {
     public ReadProperties properties;
     private String endpoint;
     private String currentUser;
@@ -42,13 +45,14 @@ public class ApiStep extends BaseUtil {
         String endpoint = "/index.php?/api/v2/get_projects";
         this.status =
                 given()
-                .when()
-                .get(endpoint)
-                .then()
-                .log().body()
-                .extract().response().getStatusCode();
+                        .when()
+                        .get(endpoint)
+                        .then()
+                        .log().body()
+                        .extract().response().getStatusCode();
     }
 
+    @Step
     @When("admin sends GET request to get the current user")
     public void adminSendsGETRequestTo() {
         String endpoint = "/index.php?/api/v2/get_current_user";
@@ -59,6 +63,19 @@ public class ApiStep extends BaseUtil {
                         .then()
                         .log().body()
                         .extract().jsonPath().get("name");
+    }
+
+    @Step
+    @When("admin sends GET request to get all active projects")
+    public void adminSendsGETRequestToGetAllActiveProjects() {
+        String endpoint = "/index.php?/api/v2/get_projects&is_completed=0";
+        this.status =
+                given()
+                        .when()
+                        .get(endpoint)
+                        .then()
+                        .log().body()
+                        .extract().response().getStatusCode();
     }
 
     @Step
