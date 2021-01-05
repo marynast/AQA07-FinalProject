@@ -8,10 +8,9 @@ import browserService.ReadProperties;
 
 public class DashboardPage extends BasePage {
 
-    public String ENDPOINT = "/index.php?/dashboard";
     private static By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
-    private static By TOOLTIP_BUTTON = By.xpath("//a[class='link link-tooltip']");
-    private static By TOOLTIP_TEXT = By.xpath("//a[tooltip-text='Change the time frame for the chart.']");
+    private static By TOOLTIP_BUTTON = By.xpath("//a[@class='link link-tooltip']");
+    private static By TOOLTIP_TEXT = By.xpath("//a[@tooltip-text='Change the time frame for the chart.']");
 
     public DashboardPage(WebDriver driver) {
         super(driver,false );
@@ -35,6 +34,6 @@ public class DashboardPage extends BasePage {
     }
 
     public String getTooltipText() {
-        return driver.findElement(TOOLTIP_TEXT).getText();
+        return waiters.getElementBy(TOOLTIP_TEXT).getText();
     }
 }
