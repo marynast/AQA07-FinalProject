@@ -20,6 +20,8 @@ public class AddProjectStep extends BaseStep {
 
     @And("project info from db where project id = {int}")
     public void getProjectInfoFromDb ( int id) {
+
+
     }
 
     @Then("text {string} is displayed")

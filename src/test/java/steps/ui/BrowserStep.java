@@ -13,12 +13,16 @@ import java.sql.SQLException;
 
 
 public class BrowserStep extends BaseStep {
+
+
+
     public BrowserStep(MyWebDriver driver) {
         super(driver);
     }
 
     @BeforeTest
     public void setUpConnection(){
+        org.apache.log4j.BasicConfigurator.configure();
         dataBaseService = new DataBaseService();
     }
 
