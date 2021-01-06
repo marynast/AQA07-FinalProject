@@ -5,31 +5,35 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 
+
 public class DataBaseService {
     public static Logger logger = Logger.getLogger(DataBaseService.class);
+    public ReadProperties readProperties;
+
     Connection connection = null;
     Statement statement = null;
-    public ReadProperties properties;
 
     public DataBaseService() {
-        properties = new ReadProperties();
-        String DB_URL = properties.getDB() + "://" + properties.getDBHost() + ":" + properties.getDBPort() + "/" + properties.getDBName();
+        readProperties = new ReadProperties();
+        final String DB_URL = readProperties.getDB() + "://" + readProperties.getDBHost() + ":" + readProperties.getDBPort() + "/" + readProperties.getDBName();
+
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            logger.info(e.toString());
+            System.out.println(e.toString());
             return;
         }
-        try{
-            connection = DriverManager.getConnection(DB_URL, properties.getDBUsername(), properties.getDBPassword());
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, readProperties.getDBUsername(), readProperties.getDBPassword());
         } catch (SQLException throwables) {
-            logger.info(throwables.toString());
+            System.out.println(throwables.toString());
         }
 
-        if(connection != null) {
-            logger.info("Connection to DB is successful");
+        if (connection != null) {
+            System.out.println("You successfully connected to database.");
         } else {
-            logger.info("Something went wrong");
+            System.out.println("Что-то пошло не так!");
         }
     }
 
@@ -43,14 +47,15 @@ public class DataBaseService {
                 statement = getConnection().createStatement();
             }
         } catch (SQLException ex) {
-            logger.info("Couldn't create statement");
+            System.out.println("Не удалось создать Statement...");
         }
+
         return statement;
     }
 
     public void executeSQL(String sql) {
         try {
-            logger.info("Request result: " + getStatement().execute(sql));
+            logger.info("Результат выполнения запроса: " + getStatement().execute(sql));
         } catch (SQLException ex) {
             logger.info(ex.getMessage());
         }
@@ -60,19 +65,26 @@ public class DataBaseService {
         try {
             return getStatement().executeQuery(sql);
         } catch (SQLException ex) {
-            logger.info(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         return null;
     }
 
-    public void closeConnection() {
+    public void closeStatement() {
         try {
-            if (!statement.isClosed()) {
+            if (statement != null) {
                 statement.close();
             }
+        } catch (SQLException ex) {
+            System.out.println("Не удалось закрыть Statement");
+        }
+    }
+
+    public void closeConnection() {
+        try {
             connection.close();
         } catch (SQLException throwables) {
-            logger.error(throwables.getMessage());
+            System.out.println(throwables.toString());
         }
     }
 }
