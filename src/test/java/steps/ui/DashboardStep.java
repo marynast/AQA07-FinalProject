@@ -12,8 +12,9 @@ public class DashboardStep extends BaseStep {
     public DashboardStep(MyWebDriver driver) {
         super(driver);
     }
+
     @And("Dashboard page is opened")
-    public void dashboardPageIsOpened (){
+    public void dashboardPageIsOpened() {
        new DashboardPage(driver);
     }
 
