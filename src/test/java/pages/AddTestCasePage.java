@@ -15,7 +15,7 @@ public class AddTestCasePage extends BasePage {
     private By FILE_UPLOAD = By.cssSelector("input[type=file]");
     private By SAVE_TEST_CASE_BUTTON = By.id("accept");
     private String basePath = new File("").getAbsolutePath();
-    private String filePath = basePath+"\\src\\images\\1.png";
+    private String filePath = basePath+"/src/images/1.png";
 
 
     public AddTestCasePage(WebDriver driver) {

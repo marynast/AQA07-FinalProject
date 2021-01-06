@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 public class TestCasePage extends BasePage {
 
     private By ATTACHMENT_SELECTOR=By.className("markdown-img");
-    private By TEST_CASE_SAVED_MESSAGE = By.xpath("//div[text()='Successfully added the new test case.']");
+    private By TEST_CASE_SAVED_MESSAGE = By.xpath("//div[text()='Successfully added the new test case. ']");
 
     public TestCasePage(WebDriver driver) {
         super(driver, false);
@@ -22,7 +22,7 @@ public class TestCasePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return false;
+        return waiters.isElementDisplayed(By.id("navigation-cases-details"));
     }
 
     public boolean attachmentIsDisplayed(){
