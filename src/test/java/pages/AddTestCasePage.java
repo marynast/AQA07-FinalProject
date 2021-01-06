@@ -9,7 +9,6 @@ import java.io.File;
 
 public class AddTestCasePage extends BasePage {
 
-    private By ADD_TEST_CASE = By.xpath("//a[@class='sidebar-button']");
     private By TEST_CASE_TITLE = By.id("title");
     private By STEPS_DESCRIPTION = By.id("custom_steps");
     private By EXPECTED_RESULT_DESCRIPTION = By.id("custom_expected");
@@ -29,11 +28,7 @@ public class AddTestCasePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return false;
-    }
-
-    public WebElement getAddTestCasesButton() {
-        return waiters.getElementBy(ADD_TEST_CASE);
+        return waiters.isElementDisplayed(By.id("title"));
     }
 
     public WebElement getTitleField() {

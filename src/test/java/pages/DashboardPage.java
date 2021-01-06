@@ -2,20 +2,21 @@ package pages;
 
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import browserService.ReadProperties;
+import org.openqa.selenium.interactions.Actions;
 
 public class DashboardPage extends BasePage {
 
     private static By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
     private static By TOOLTIP_BUTTON = By.xpath("//a[@class='link link-tooltip']");
     private static By TOOLTIP_TEXT = By.xpath("//a[@tooltip-text='Change the time frame for the chart.']");
-    private static By SELECT_PROJECT = By.xpath("//a[text()='Test project']");
-    private static By SELECT_TEST_CASES_TAB = By.xpath("//li/a[text()='Test Cases']");
+    private static By SELECT_PROJECT = By.xpath("//div[@class='summary-title text-ppp']/a[text()='Test project']");
 
     public DashboardPage(WebDriver driver) {
-        super(driver,false);
+        super(driver, false);
     }
 
     @Override
@@ -43,7 +44,10 @@ public class DashboardPage extends BasePage {
         return waiters.getElementBy(SELECT_PROJECT);
     }
 
-    public WebElement selectTestCasesTab() {
-        return waiters.getElementBy(SELECT_TEST_CASES_TAB);
+    public void clickSelectedProject() {
+        WebElement webElement = selectProject();
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", webElement);
+        webElement.click();
     }
 }

@@ -28,7 +28,5 @@ public class GetTooltipStep extends BaseStep {
         WebElement element = waiters.getElementBy(By.xpath("//a[@tooltip-text='Change the time frame for the chart.']"));
         String titleText = element.getAttribute("title");
         System.out.println(titleText);
-
     }
-
 }
