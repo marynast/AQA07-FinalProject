@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import browserService.ReadProperties;
 
-public class ProjectsPage extends BasePage {
+public class ProjectsAdministrationPage extends BasePage {
 
     private String ENDPOINT = "index.php?/admin/projects/overview";
 
-    public ProjectsPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+    public ProjectsAdministrationPage(WebDriver driver, boolean b) {
+        super(driver, true);
     }
 
     private By DELETE_BUTTON =

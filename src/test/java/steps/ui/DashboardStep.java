@@ -22,4 +22,9 @@ public class DashboardStep extends BaseStep {
     public void userClicksAddProjectButton() {
         dashboardPage.getProjectButton().click();
     }
+
+    @When("user clicks on project Test project")
+    public void userClicksOnProjectTestProject() {
+        dashboardPage.clickSelectedProject();
+    }
 }

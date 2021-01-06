@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import utils.Waiters;
 
 public abstract class BasePage {
+    public String BASE_URL;
     protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 5;
     public final WebDriver driver;
     public final ReadProperties readProperties;
@@ -16,7 +17,8 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
-        readProperties =  new ReadProperties();
+        this.readProperties =  new ReadProperties();
+        this.BASE_URL = readProperties.getURL();
         this.waiters = new Waiters(driver);
 
         if (openPageByUrl) {

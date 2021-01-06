@@ -9,14 +9,13 @@ import java.io.File;
 
 public class AddTestCasePage extends BasePage {
 
-    private By ADD_TEST_CASE = By.xpath("//a[@class='sidebar-button']");
     private By TEST_CASE_TITLE = By.id("title");
     private By STEPS_DESCRIPTION = By.id("custom_steps");
     private By EXPECTED_RESULT_DESCRIPTION = By.id("custom_expected");
     private By FILE_UPLOAD = By.cssSelector("input[type=file]");
     private By SAVE_TEST_CASE_BUTTON = By.id("accept");
     private String basePath = new File("").getAbsolutePath();
-    private String filePath = basePath+"\\src\\images\\1.png";
+    private String filePath = basePath+"/src/images/1.png";
 
 
     public AddTestCasePage(WebDriver driver) {
@@ -29,11 +28,7 @@ public class AddTestCasePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return false;
-    }
-
-    public WebElement getAddTestCasesButton() {
-        return waiters.getElementBy(ADD_TEST_CASE);
+        return waiters.isElementDisplayed(By.id("title"));
     }
 
     public WebElement getTitleField() {
