@@ -18,13 +18,20 @@ public class LoginStep extends BaseStep {
 
     LoginPage loginPage = new LoginPage(driver);
 
-    @Given("login page is opened")
-    public void loginPageIsOpened() {
+    @Given("user is logged into TestRail")
+    public void userIsLoggedIntoTestRail() {
+        loginPage.getLogin().sendKeys(new ReadProperties().getUsername());
+        loginPage.getPassword().sendKeys(new ReadProperties().getPassword());
+        loginPage.getLogInButton().click();
+    }
+
+    @When("user opens login page")
+    public void userOpensLoginPage() {
         driver.get(new ReadProperties().getURL());
     }
 
     @Step
-    @When("user inputs email {string}")
+    @And("user inputs email {string}")
     public void userInputsEmail(String validEmail) {
         loginPage.getLogin().sendKeys(validEmail);
     }
