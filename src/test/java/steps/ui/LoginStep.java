@@ -53,4 +53,9 @@ public class LoginStep extends BaseStep {
     public void errorTextIsDisplayed(String errorText) {
         Assert.assertTrue(loginPage.getErrorText().isDisplayed());
     }
+
+    @When("user clicks Forgot your password? button")
+    public void userClicksForgotYourPasswordButton() {
+        loginPage.getForgotPasswordButton().click();
+    }
 }
