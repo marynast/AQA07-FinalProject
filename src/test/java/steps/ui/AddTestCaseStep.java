@@ -11,6 +11,8 @@ import pages.ProjectPage;
 import pages.TestCasePage;
 import support.MyWebDriver;
 
+import java.io.File;
+
 public class AddTestCaseStep extends BaseStep {
     public AddTestCaseStep(MyWebDriver driver) {
         super(driver);
@@ -39,7 +41,7 @@ public class AddTestCaseStep extends BaseStep {
     @Step
     @And("user adds an image")
     public void userAddsImage() {
-        addTestCasePage.uploadFile();
+        addTestCasePage.dropFile(new File("/Users/marina/IdeaProjects/AQA07-FinalProject/src/images/1.png"), addTestCasePage.expectedResultDropArea(), 0, 0);
     }
 
     @Step
