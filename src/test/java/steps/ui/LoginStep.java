@@ -1,7 +1,11 @@
 package steps.ui;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import pages.LoginPage;
 import support.MyWebDriver;
 import browserService.ReadProperties;
@@ -12,16 +16,34 @@ public class LoginStep extends BaseStep {
         super(driver);
     }
 
-    @Step
-    @Given("user is logged into TestRail")
-    public void userIsLoggedIntoTestRail() {
-        ReadProperties readProperties = new ReadProperties();
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.getLogin().sendKeys(readProperties.getUsername());
-        loginPage.getPassword().sendKeys(readProperties.getPassword());
-        loginPage.getLogInButton().click();
+    LoginPage loginPage = new LoginPage(driver);
 
+    @Given("login page is opened")
+    public void loginPageIsOpened() {
+        driver.get(new ReadProperties().getURL());
     }
 
+    @Step
+    @When("user inputs email {string}")
+    public void userInputsEmail(String validEmail) {
+        loginPage.getLogin().sendKeys(validEmail);
+    }
 
+    @Step
+    @And("invalid password {string}")
+    public void invalidPassword(String invalidPassword) {
+        loginPage.getPassword().sendKeys(invalidPassword);
+    }
+
+    @Step
+    @And("clicks login button")
+    public void clicksLoginButton() {
+        loginPage.getLogInButton().click();
+    }
+
+    @Step
+    @Then("error text {string} is displayed")
+    public void errorTextIsDisplayed(String errorText) {
+        Assert.assertTrue(loginPage.getErrorText().isDisplayed());
+    }
 }

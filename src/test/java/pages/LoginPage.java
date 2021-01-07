@@ -11,6 +11,7 @@ public class LoginPage extends BasePage {
     private static By LOGIN_FIELD = By.id("name");
     private static By PASSWORD_FIELD = By.id("password");
     private static By LOG_IN_BUTTON = By.id("button_primary");
+    private static By ERROR_TEXT = By.xpath("//div[text() = 'Email/Login or Password is incorrect. Please try again.']");
 
     public LoginPage(WebDriver driver) {
         super(driver, true);
@@ -36,6 +37,10 @@ public class LoginPage extends BasePage {
 
     public WebElement getLogInButton() {
         return  waiters.getElementBy(LOG_IN_BUTTON);
+    }
+
+    public WebElement getErrorText() {
+        return waiters.getElementBy(ERROR_TEXT);
     }
 
 }
