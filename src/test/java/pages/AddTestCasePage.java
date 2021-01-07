@@ -96,4 +96,8 @@ public class AddTestCasePage extends BasePage {
     public WebElement getSaveTestCaseButton() {
         return waiters.getElementBy(SAVE_TEST_CASE_BUTTON);
     }
+
+    public boolean dropAreaIsNotVisible() {
+        return waiters.getElementIsNotDisplayed(EXPECTED_RESULT_DROP_AREA);
+    }
 }

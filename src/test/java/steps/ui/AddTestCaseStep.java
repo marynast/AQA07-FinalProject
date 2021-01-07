@@ -42,6 +42,7 @@ public class AddTestCaseStep extends BaseStep {
     @And("user adds an image")
     public void userAddsImage() {
         addTestCasePage.dropFile(new File("/Users/marina/IdeaProjects/AQA07-FinalProject/src/images/1.png"), addTestCasePage.expectedResultDropArea(), 0, 0);
+        addTestCasePage.dropAreaIsNotVisible();
     }
 
     @Step

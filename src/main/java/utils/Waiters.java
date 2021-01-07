@@ -55,4 +55,12 @@ public class Waiters {
             return false;
         }
     }
+
+    public boolean getElementIsNotDisplayed (By by) {
+        try {
+            return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(by));
+        } catch (TimeoutException ex) {
+            return false;
+        }
+    }
 }

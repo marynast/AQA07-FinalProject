@@ -9,7 +9,9 @@ import java.util.NoSuchElementException;
 
 public class TestCasePage extends BasePage {
 
-    private By ATTACHMENT_SELECTOR=By.className("markdown-img");
+    private By ATTACHMENT_SELECTOR=By.xpath("//div[text()='\n" +
+            "\t\t\tPng Image,\n" +
+            "\t\t\t111K\t\t\t']");
     private By TEST_CASE_SAVED_MESSAGE = By.xpath("//div[text()='Successfully added the new test case. ']");
 
     public TestCasePage(WebDriver driver) {
