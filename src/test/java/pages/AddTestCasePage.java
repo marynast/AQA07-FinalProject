@@ -82,6 +82,7 @@ public class AddTestCasePage extends BasePage {
 
         WebElement input = (WebElement) jse.executeScript(JS_DROP_FILE, target, offsetX, offsetY);
         input.sendKeys(filePath.getAbsoluteFile().toString());
+        
     }
 
     public WebElement expectedResultDropArea() {

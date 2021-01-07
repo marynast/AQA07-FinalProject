@@ -19,7 +19,7 @@ public class ProjectTestCasesPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.id("inlineSectionActions-2"));
+        return waiters.isElementDisplayed(By.cssSelector(".content-header-title.page_title"));
     }
 
     public WebElement getAddTestCasesButton() {
