@@ -21,7 +21,6 @@ public class AddProjectPage extends BasePage {
         super(browserService, false);
     }
 
-
     @Override
     protected void openPage() {
     }
@@ -31,11 +30,11 @@ public class AddProjectPage extends BasePage {
       return browserService.getWaiters().isElementDisplayed(By.name("name"));
     }
 
-    public WebElement getNameField (){
+    public WebElement getNameField(String name){
         return browserService.getWaiters().getElementBy(NAME_FIELD);
     }
 
-    public WebElement getAnnouncementField (){
+    public WebElement getAnnouncementField(String announcement){
         return browserService.getWaiters().getElementBy(ANNOUNCEMENT_FIELD);
     }
 

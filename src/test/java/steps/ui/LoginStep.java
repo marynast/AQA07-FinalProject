@@ -9,7 +9,6 @@ import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import pages.LoginPage;
-import support.MyWebDriver;
 import browserService.ReadProperties;
 
 public class LoginStep extends BaseUtil {

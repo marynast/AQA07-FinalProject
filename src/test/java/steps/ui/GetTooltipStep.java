@@ -5,13 +5,10 @@ import browserService.BrowserService;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import pages.DashboardPage;
-import support.MyWebDriver;
+
 
 public class GetTooltipStep extends BaseUtil {
     public GetTooltipStep(BrowserService browserService) {
