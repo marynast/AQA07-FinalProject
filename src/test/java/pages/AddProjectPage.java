@@ -9,14 +9,16 @@ import browserService.ReadProperties;
 
 public class AddProjectPage extends BasePage {
 
-    private String ENDPOINT = "/index.php?/admin/projects/add";
-    private By PROJECT_NAME = By.id("name");
-    private By ANNOUNCEMENT = By.id("announcement");
-    private By ADD_PROJECT = By.id("accept");
-    private By RADIO_RECOMMENDED = By.xpath("//div[@class='radio']/label/input[@id='suite_mode_single']");
+    private static By NAME_FIELD = By.id("name");
+    private static By ANNOUNCEMENT_FIELD = By.id("announcement");
+    private static By SHOW_ANNOUNCEMENT = By.id("show_announcement");
+    private static By SINGLE_MODE = By.id("suite_mode_single");
+    private static By SINGLE_BASELINE_MODE = By.id("suite_mode_single_baseline");
+    private static By MULTIPLE_MODE = By.id("suite_mode_multi");
+    private static By ADD_PROJECT_BUTTON = By.id("accept");
 
-    public AddProjectPage(BrowserService browserService, boolean openPageByUrl) {
-        super(browserService, openPageByUrl);
+    public AddProjectPage(BrowserService browserService ) {
+        super(browserService, false);
     }
 
 
@@ -29,19 +31,31 @@ public class AddProjectPage extends BasePage {
       return browserService.getWaiters().isElementDisplayed(By.name("name"));
     }
 
-    public WebElement getProjectNameField() {
-        return browserService.getWaiters().getElementBy(PROJECT_NAME);
+    public WebElement getNameField (){
+        return browserService.getWaiters().getElementBy(NAME_FIELD);
     }
 
-    public WebElement getAnnouncementField() {
-        return browserService.getWaiters().getElementBy(ANNOUNCEMENT);
+    public WebElement getAnnouncementField (){
+        return browserService.getWaiters().getElementBy(ANNOUNCEMENT_FIELD);
     }
 
-    public boolean getRadioButtonRecommended() {
-        return browserService.getWaiters().getElementToBeSelected(RADIO_RECOMMENDED);
+    public WebElement getShowAnnouncement (){
+        return browserService.getWaiters().getElementBy(SHOW_ANNOUNCEMENT);
     }
 
-    public WebElement getAddProjectButton() {
-        return browserService.getWaiters().getElementBy(ADD_PROJECT);
+    public WebElement getSingleMode (){
+        return browserService.getWaiters().getElementBy(SINGLE_MODE);
+    }
+
+    public WebElement getSingleBaselineMode (){
+        return browserService.getWaiters().getElementBy(SINGLE_BASELINE_MODE);
+    }
+
+    public WebElement getMultipleMode (){
+        return browserService.getWaiters().getElementBy(MULTIPLE_MODE);
+    }
+
+    public WebElement getAddProjectButton (){
+        return browserService.getWaiters().getElementBy(ADD_PROJECT_BUTTON);
     }
 }
