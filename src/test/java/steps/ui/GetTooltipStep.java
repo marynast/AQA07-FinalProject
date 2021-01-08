@@ -17,13 +17,13 @@ public class GetTooltipStep extends BaseUtil {
 
     DashboardPage dashboardPage = new DashboardPage(browsersService);
 
-    @When("user hovers the mouse over the text 14 days")
+    @When("User hovers the mouse over the text 14 days")
     public void userHoversTheMouseOverTheText() {
         Actions actions = new Actions((WebDriver) browsersService);
         actions.moveToElement(dashboardPage.getTooltipButton()).build().perform();
     }
 
-    @Then("text {string} is present")
+    @Then("Text {string} is present")
     public void text_is_present(String expectedTooltipText) {
     }
 }
