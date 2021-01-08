@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,9 +15,10 @@ public class AddProjectPage extends BasePage {
     private By ADD_PROJECT = By.id("accept");
     private By RADIO_RECOMMENDED = By.xpath("//div[@class='radio']/label/input[@id='suite_mode_single']");
 
-    public AddProjectPage(WebDriver driver) {
-        super(driver, false);
+    public AddProjectPage(BrowserService browserService, boolean openPageByUrl) {
+        super(browserService, openPageByUrl);
     }
+
 
     @Override
     protected void openPage() {
@@ -24,22 +26,22 @@ public class AddProjectPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-      return waiters.isElementDisplayed(By.name("name"));
+      return browserService.getWaiters().isElementDisplayed(By.name("name"));
     }
 
     public WebElement getProjectNameField() {
-        return waiters.getElementBy(PROJECT_NAME);
+        return browserService.getWaiters().getElementBy(PROJECT_NAME);
     }
 
     public WebElement getAnnouncementField() {
-        return waiters.getElementBy(ANNOUNCEMENT);
+        return browserService.getWaiters().getElementBy(ANNOUNCEMENT);
     }
 
     public boolean getRadioButtonRecommended() {
-        return waiters.getElementToBeSelected(RADIO_RECOMMENDED);
+        return browserService.getWaiters().getElementToBeSelected(RADIO_RECOMMENDED);
     }
 
     public WebElement getAddProjectButton() {
-        return waiters.getElementBy(ADD_PROJECT);
+        return browserService.getWaiters().getElementBy(ADD_PROJECT);
     }
 }

@@ -1,16 +1,19 @@
 package steps.ui;
 
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.en.And;
 import io.qameta.allure.Step;
 import pages.ProjectTestCasesPage;
 import support.MyWebDriver;
 
-public class ProjectTestCasesStep extends BaseStep {
-    public ProjectTestCasesStep(MyWebDriver driver) {
-        super(driver);
-    }
+public class ProjectTestCasesStep extends BaseUtil {
 
-    ProjectTestCasesPage projectTestCasesPage = new ProjectTestCasesPage(driver);
+    ProjectTestCasesPage projectTestCasesPage = new ProjectTestCasesPage(browsersService);
+
+    public ProjectTestCasesStep(BrowserService browserService) {
+        super(browserService);
+    }
 
     @Step
     @And("user clicks Add Test Case button")

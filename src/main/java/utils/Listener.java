@@ -23,10 +23,6 @@ public class Listener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         System.out.println("Test failed");
 
-        Object currentClass = result.getInstance();
-        WebDriver driver = ((BaseUtil) currentClass).driver;
-        byte[] srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        saveScreenshot(srcFile);
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")

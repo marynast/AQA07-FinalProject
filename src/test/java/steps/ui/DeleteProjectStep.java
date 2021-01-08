@@ -1,13 +1,17 @@
 package steps.ui;
 
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import support.MyWebDriver;
 
-public class DeleteProjectStep extends BaseStep {
-    public DeleteProjectStep(MyWebDriver webDriver) {
-        super(webDriver);
+public class DeleteProjectStep extends BaseUtil {
+
+    public DeleteProjectStep(BrowserService browserService) {
+        super(browserService);
     }
+
     @Given("{string} is created")
     public void projectIsCreated(String string) {
 

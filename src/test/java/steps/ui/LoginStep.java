@@ -1,5 +1,7 @@
 package steps.ui;
 
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,15 +12,15 @@ import pages.LoginPage;
 import support.MyWebDriver;
 import browserService.ReadProperties;
 
-public class LoginStep extends BaseStep {
+public class LoginStep extends BaseUtil {
 
-    public LoginStep(MyWebDriver driver) {
-        super(driver);
+    LoginPage loginPage = new LoginPage(browsersService);
+
+    public LoginStep(BrowserService browserService) {
+        super(browserService);
     }
 
-    LoginPage loginPage = new LoginPage(driver);
-
-    @Given("user is logged into TestRail")
+    @Given("User is logged into TestRail")
     public void userIsLoggedIntoTestRail() {
         loginPage.getLogin().sendKeys(new ReadProperties().getUsername());
         loginPage.getPassword().sendKeys(new ReadProperties().getPassword());
@@ -27,7 +29,7 @@ public class LoginStep extends BaseStep {
 
     @When("user opens login page")
     public void userOpensLoginPage() {
-        driver.get(new ReadProperties().getURL());
+        browsersService.getDriver().get(properties.getURL());
     }
 
     @Step

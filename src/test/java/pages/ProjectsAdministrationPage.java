@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,10 +10,6 @@ import browserService.ReadProperties;
 public class ProjectsAdministrationPage extends BasePage {
 
     private String ENDPOINT = "index.php?/admin/projects/overview";
-
-    public ProjectsAdministrationPage(WebDriver driver, boolean b) {
-        super(driver, true);
-    }
 
     private By DELETE_BUTTON =
             By.xpath("//tr/td/a[text()='Project by Marina']/../following-sibling::*/following-sibling::*/a" +
@@ -28,26 +25,30 @@ public class ProjectsAdministrationPage extends BasePage {
 
     private static By PROJECT_DELETED_MESSAGE = By.xpath("//div[text()='Successfully deleted the project.']");
 
+    public ProjectsAdministrationPage(BrowserService browserService) {
+        super(browserService, false);
+    }
+
+
     @Override
     protected void openPage() {
-        driver.get(new ReadProperties().getURL() + ENDPOINT);
     }
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.xpath("//a[text()='Projects']"));
+        return browserService.getWaiters().isElementDisplayed(By.xpath("//a[text()='Projects']"));
     }
 
     public WebElement getDeleteProjectButton() {
-        return waiters.getElementBy(DELETE_BUTTON);
+        return browserService.getWaiters().getElementBy(DELETE_BUTTON);
     }
 
     public WebElement getConfirmDeleteCheckbox() {
-        return waiters.getElementBy(CHECKBOX_TO_CONFIRM_DELETE);
+        return browserService.getWaiters().getElementBy(CHECKBOX_TO_CONFIRM_DELETE);
     }
 
     public WebElement getConfirmDeleteButton() {
-        return waiters.getElementBy(OK_DELETE_PROJECT_BUTTON);
+        return browserService.getWaiters().getElementBy(OK_DELETE_PROJECT_BUTTON);
     }
 
     public String getProjectAddedMessage() {

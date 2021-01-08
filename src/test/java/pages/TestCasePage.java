@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,8 @@ public class TestCasePage extends BasePage {
             "\t\t\t111K\t\t\t']");
     private By TEST_CASE_SAVED_MESSAGE = By.xpath("//div[text()='Successfully added the new test case. ']");
 
-    public TestCasePage(WebDriver driver) {
-        super(driver, false);
+    public TestCasePage(BrowserService browserService) {
+        super(browserService, false);
     }
 
     @Override
@@ -24,12 +25,12 @@ public class TestCasePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.id("navigation-cases-details"));
+        return browserService.getWaiters().isElementDisplayed(By.id("navigation-cases-details"));
     }
 
     public boolean attachmentIsDisplayed(){
         try {
-            return waiters.isElementDisplayed(ATTACHMENT_SELECTOR);
+            return browserService.getWaiters().isElementDisplayed(ATTACHMENT_SELECTOR);
         }catch (NoSuchElementException e){
             return false;
         }
@@ -37,7 +38,7 @@ public class TestCasePage extends BasePage {
 
     public boolean TestCaseSavedTextIsDisplayed() {
         try {
-            return waiters.isElementDisplayed(TEST_CASE_SAVED_MESSAGE);
+            return browserService.getWaiters().isElementDisplayed(TEST_CASE_SAVED_MESSAGE);
         }catch (NoSuchElementException e){
             return false;
         }

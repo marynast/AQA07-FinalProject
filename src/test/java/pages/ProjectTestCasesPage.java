@@ -1,6 +1,8 @@
 package pages;
 
 import baseEntities.BasePage;
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +11,8 @@ public class ProjectTestCasesPage extends BasePage {
 
     private By ADD_TEST_CASE = By.xpath("//a[@class='sidebar-button']");
 
-    public ProjectTestCasesPage(WebDriver driver) {
-        super(driver, false);
+    public ProjectTestCasesPage(BrowserService browserService) {
+        super(browserService, false);
     }
 
     @Override
@@ -19,10 +21,10 @@ public class ProjectTestCasesPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.cssSelector(".content-header-title.page_title"));
+        return browserService.getWaiters().isElementDisplayed(By.cssSelector(".content-header-title.page_title"));
     }
 
     public WebElement getAddTestCasesButton() {
-        return waiters.getElementBy(ADD_TEST_CASE);
+        return browserService.getWaiters().getElementBy(ADD_TEST_CASE);
     }
 }
