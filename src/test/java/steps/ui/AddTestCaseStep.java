@@ -1,5 +1,7 @@
 package steps.ui;
 
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,12 +15,12 @@ import support.MyWebDriver;
 
 import java.io.File;
 
-public class AddTestCaseStep extends BaseStep {
-    public AddTestCaseStep(MyWebDriver driver) {
-        super(driver);
+public class AddTestCaseStep extends BaseUtil {
+    public AddTestCaseStep(BrowserService browserService) {
+        super(browserService);
     }
 
-    AddTestCasePage addTestCasePage = new AddTestCasePage(driver);
+    AddTestCasePage addTestCasePage = new AddTestCasePage(browsersService);
 
     @Step
     @And("user populates the Title field with the text {string}")

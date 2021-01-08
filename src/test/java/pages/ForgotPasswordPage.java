@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,9 +14,10 @@ public class ForgotPasswordPage extends BasePage {
     private By SUCCESS_TEXT = By.xpath("//div[text() = 'Email sent successfully. Please check your email inbox for the " +
             "reset password instructions.']");
 
-    public ForgotPasswordPage(WebDriver driver) {
-        super(driver, false);
+    public ForgotPasswordPage(BrowserService browserService) {
+        super(browserService, false);
     }
+
 
     @Override
     protected void openPage() {
@@ -23,18 +25,18 @@ public class ForgotPasswordPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.id("name"));
+        return browserService.getWaiters().isElementDisplayed(By.id("name"));
     }
 
     public WebElement getEmailInput() {
-        return waiters.getElementBy(EMAIL_INPUT);
+        return browserService.getWaiters().getElementBy(EMAIL_INPUT);
     }
 
     public WebElement getPasswordResetConfirmButton() {
-        return waiters.getElementBy(RESET_PASSWORD_CONFIRM_BUTTON);
+        return browserService.getWaiters().getElementBy(RESET_PASSWORD_CONFIRM_BUTTON);
     }
 
     public WebElement getSuccessText() {
-        return waiters.getElementBy(SUCCESS_TEXT);
+        return browserService.getWaiters().getElementBy(SUCCESS_TEXT);
     }
 }

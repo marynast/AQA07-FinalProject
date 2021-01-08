@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +16,10 @@ public class DashboardPage extends BasePage {
     private static By TOOLTIP_TEXT = By.xpath("//a[@tooltip-text='Change the time frame for the chart.']");
     private static By SELECT_PROJECT = By.xpath("//div[@class='summary-title text-ppp']/a[text()='Test project']");
 
-    public DashboardPage(WebDriver driver) {
-        super(driver, false);
+    public DashboardPage(BrowserService browserService) {
+        super(browserService, false);
     }
+
 
     @Override
     protected void openPage() {
@@ -25,23 +27,23 @@ public class DashboardPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(ADD_PROJECT_BUTTON);
+        return browserService.getWaiters().isElementDisplayed(ADD_PROJECT_BUTTON);
     }
 
     public WebElement getProjectButton() {
-        return waiters.getElementBy(ADD_PROJECT_BUTTON);
+        return browserService.getWaiters().getElementBy(ADD_PROJECT_BUTTON);
     }
 
     public WebElement getTooltipButton() {
-        return waiters.getElementBy(TOOLTIP_BUTTON);
+        return browserService.getWaiters().getElementBy(TOOLTIP_BUTTON);
     }
 
     public String getTooltipText() {
-        return waiters.getElementBy(TOOLTIP_TEXT).getText();
+        return browserService.getWaiters().getElementBy(TOOLTIP_TEXT).getText();
     }
 
     public WebElement selectProject() {
-        return waiters.getElementBy(SELECT_PROJECT);
+        return browserService.getWaiters().getElementBy(SELECT_PROJECT);
     }
 
     public void clickSelectedProject() {

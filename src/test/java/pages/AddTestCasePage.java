@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -20,10 +21,10 @@ public class AddTestCasePage extends BasePage {
     private String basePath = new File("").getAbsolutePath();
     private String filePath = basePath+"/src/images/1.png";
 
-
-    public AddTestCasePage(WebDriver driver) {
-        super(driver, false);
+    public AddTestCasePage(BrowserService browserService) {
+        super(browserService, false);
     }
+
 
     @Override
     protected void openPage() {
@@ -31,19 +32,19 @@ public class AddTestCasePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return waiters.isElementDisplayed(By.id("title"));
+        return browserService.getWaiters().isElementDisplayed(By.id("title"));
     }
 
     public WebElement getTitleField() {
-        return waiters.getElementBy(TEST_CASE_TITLE);
+        return browserService.getWaiters().getElementBy(TEST_CASE_TITLE);
     }
 
     public WebElement getStepsField() {
-        return waiters.getElementBy(STEPS_DESCRIPTION);
+        return browserService.getWaiters().getElementBy(STEPS_DESCRIPTION);
     }
 
     public WebElement getExpectedResultField() {
-        return waiters.getElementBy(EXPECTED_RESULT_DESCRIPTION);
+        return browserService.getWaiters().getElementBy(EXPECTED_RESULT_DESCRIPTION);
     }
 
     public void dropFile(File filePath, WebElement target, int offsetX, int offsetY) {
@@ -86,18 +87,18 @@ public class AddTestCasePage extends BasePage {
     }
 
     public WebElement expectedResultDropArea() {
-        return waiters.getElementBy(EXPECTED_RESULT_DROP_AREA);
+        return browserService.getWaiters().getElementBy(EXPECTED_RESULT_DROP_AREA);
     }
 
     public WebElement getConfirmAddTestCaseButton() {
-        return waiters.getElementBy(SAVE_TEST_CASE_BUTTON);
+       return browserService.getWaiters().getElementBy(SAVE_TEST_CASE_BUTTON);
     }
 
     public WebElement getSaveTestCaseButton() {
-        return waiters.getElementBy(SAVE_TEST_CASE_BUTTON);
+        return browserService.getWaiters().getElementBy(SAVE_TEST_CASE_BUTTON);
     }
 
     public boolean dropAreaIsNotVisible() {
-        return waiters.getElementIsNotDisplayed(EXPECTED_RESULT_DROP_AREA);
+        return browserService.getWaiters().getElementIsNotDisplayed(EXPECTED_RESULT_DROP_AREA);
     }
 }

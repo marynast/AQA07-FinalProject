@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import browserService.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,38 +15,37 @@ public class LoginPage extends BasePage {
     private static By FORGOT_PASSWORD_BUTTON = By.className("loginpage-forgotpassword");
     private static By ERROR_TEXT = By.xpath("//div[text() = 'Email/Login or Password is incorrect. Please try again.']");
 
-    public LoginPage(WebDriver driver) {
-        super(driver, true);
+    public LoginPage(BrowserService browserService) {
+        super(browserService, true);
     }
 
     @Override
     protected void openPage() {
-        driver.get(new ReadProperties().getURL());
     }
 
     @Override
     public boolean isPageOpened() {
-         return waiters.isElementDisplayed(LOG_IN_BUTTON);
+         return browserService.getWaiters().isElementDisplayed(LOG_IN_BUTTON);
     }
 
     public WebElement getLogin() {
-       return waiters.getElementBy(LOGIN_FIELD);
+       return browserService.getWaiters().getElementBy(LOGIN_FIELD);
     }
 
     public WebElement getPassword() {
-        return waiters.getElementBy(PASSWORD_FIELD);
+        return browserService.getWaiters().getElementBy(PASSWORD_FIELD);
     }
 
     public WebElement getLogInButton() {
-        return  waiters.getElementBy(LOG_IN_BUTTON);
+        return  browserService.getWaiters().getElementBy(LOG_IN_BUTTON);
     }
 
     public WebElement getErrorText() {
-        return waiters.getElementBy(ERROR_TEXT);
+        return browserService.getWaiters().getElementBy(ERROR_TEXT);
     }
 
     public WebElement getForgotPasswordButton() {
-        return waiters.getElementBy(FORGOT_PASSWORD_BUTTON);
+        return browserService.getWaiters().getElementBy(FORGOT_PASSWORD_BUTTON);
     }
 
 }

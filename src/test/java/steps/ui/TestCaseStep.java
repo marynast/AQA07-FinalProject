@@ -1,16 +1,20 @@
 package steps.ui;
 
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.en.Then;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import pages.TestCasePage;
 import support.MyWebDriver;
 
-public class TestCaseStep extends BaseStep {
-    public TestCaseStep(MyWebDriver driver) {
-        super(driver);
+public class TestCaseStep extends BaseUtil {
+
+    TestCasePage testCasePage = new TestCasePage(browsersService);
+
+    public TestCaseStep(BrowserService browserService) {
+        super(browserService);
     }
-    TestCasePage testCasePage = new TestCasePage(driver);
 
     @Step
     @Then("test case is saved and text {string} is present")

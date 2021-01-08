@@ -2,22 +2,30 @@ package browserService;
 
 import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import models.AddProjectField;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import utils.Waiters;
 
 public class BrowserService {
-
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
+    private Waiters waiters;
+    private String baseUrl;
+    public AddProjectField addProjectField;
 
     public BrowserService() {
+    }
 
-        String browserName = new ReadProperties().getBrowserName();
+    public void setupBrowser() {
 
-        switch (browserName.toLowerCase()) {
+        ReadProperties readProperties = new ReadProperties();
+        baseUrl = readProperties.getURL();
+
+        switch (readProperties.getBrowserName().toLowerCase()) {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
                 WebDriverManager.getInstance(driverManagerType).setup();
@@ -44,8 +52,19 @@ public class BrowserService {
                 System.out.println("Browser is not supported.");
                 break;
         }
+
+        waiters = new Waiters(driver, readProperties.getTimeOut());
     }
+
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public Waiters getWaiters() {
+        return waiters;
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
     }
 }

@@ -1,7 +1,7 @@
 Feature: Login to TestRail
 
   Scenario: User enters invalid password when logins
-    When user opens login page
+    When browser is started
     And user inputs email "marina.int2@gmail.com"
     And invalid password "qwerty123"
     And clicks login button

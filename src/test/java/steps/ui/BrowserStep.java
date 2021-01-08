@@ -1,49 +1,38 @@
 package steps.ui;
 
-import dataBaseService.DataBaseService;
+import baseEntities.BaseUtil;
+import browserService.BrowserService;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
 import support.MyWebDriver;
 import browserService.ReadProperties;
 
-import java.sql.SQLException;
+public class BrowserStep extends BaseUtil {
 
-
-public class BrowserStep extends BaseStep {
-
-
-
-    public BrowserStep(MyWebDriver driver) {
-        super(driver);
-    }
-
-    @BeforeTest
-    public void setUpConnection(){
-        org.apache.log4j.BasicConfigurator.configure();
-        dataBaseService = new DataBaseService();
+    public BrowserStep(BrowserService browserService) {
+        super(browserService);
     }
 
     @Before
     public void init() {
         org.apache.log4j.BasicConfigurator.configure();
+
+    }
+
+    @Given("Browser is started")
+    public void browserIsStarted() {
+        browsersService.setupBrowser();
+        browsersService.getDriver().get(properties.getURL());
     }
 
     @After
     public void tearDown() {
-        driver.quit();
-    }
-
-    @Given("browser is started")
-    public void browserIsStarted() {
-        driver.get(new ReadProperties().getURL());
-    }
-
-    @AfterTest
-    public void closeConnection() throws SQLException {
-        dataBaseService.closeConnection();
+        browsersService.getDriver().quit();
     }
 }
 
