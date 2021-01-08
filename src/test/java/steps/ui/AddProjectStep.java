@@ -2,13 +2,11 @@ package steps.ui;
 
 import baseEntities.BaseUtil;
 import browserService.BrowserService;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import models.AddProjectField;
 import org.testng.Assert;
 import pages.AddProjectPage;
-import pages.ProjectPage;
 import pages.ProjectsAdministrationPage;
 
 
@@ -45,9 +43,8 @@ public class AddProjectStep extends BaseUtil {
         AddProjectPage addProjectPage = new AddProjectPage(browsersService);
         addProjectPage.getNameField(browsersService.addProjectField.getName());
         addProjectPage.getAnnouncementField(browsersService.addProjectField.getAnnouncement());
+        addProjectPage.click(0);
         addProjectPage.getAddProjectButton().submit();
-
-
         Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectAddedMessage(),
                 "Successfully added the new project.",
                 "Project was NOT added");

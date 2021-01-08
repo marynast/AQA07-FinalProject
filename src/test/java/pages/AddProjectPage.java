@@ -3,9 +3,9 @@ package pages;
 import baseEntities.BasePage;
 import browserService.BrowserService;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import browserService.ReadProperties;
+
+import java.util.List;
 
 public class AddProjectPage extends BasePage {
 
@@ -30,12 +30,12 @@ public class AddProjectPage extends BasePage {
       return browserService.getWaiters().isElementDisplayed(By.name("name"));
     }
 
-    public WebElement getNameField(String name){
-        return browserService.getWaiters().getElementBy(NAME_FIELD);
+    public void getNameField(String name){
+        browserService.getWaiters().getElementBy(NAME_FIELD).sendKeys(name);
     }
 
-    public WebElement getAnnouncementField(String announcement){
-        return browserService.getWaiters().getElementBy(ANNOUNCEMENT_FIELD);
+    public void getAnnouncementField(String announcement){
+        browserService.getWaiters().getElementBy(ANNOUNCEMENT_FIELD).sendKeys(announcement);
     }
 
     public WebElement getShowAnnouncement (){
@@ -46,8 +46,8 @@ public class AddProjectPage extends BasePage {
         return browserService.getWaiters().getElementBy(SINGLE_MODE);
     }
 
-    public WebElement getSingleBaselineMode (){
-        return browserService.getWaiters().getElementBy(SINGLE_BASELINE_MODE);
+    public void getSingleBaselineMode(){
+        browserService.getWaiters().getElementBy(SINGLE_BASELINE_MODE);
     }
 
     public WebElement getMultipleMode (){
@@ -57,4 +57,16 @@ public class AddProjectPage extends BasePage {
     public WebElement getAddProjectButton (){
         return browserService.getWaiters().getElementBy(ADD_PROJECT_BUTTON);
     }
+
+    private WebElement getRow (int rowIndex){
+        List<WebElement> list = browserService.getDriver().findElements(By.cssSelector(".column.project-type"));
+        return list.get(rowIndex);
+    }
+
+    public void click ( int rowIndex){
+        WebElement item = getRow(rowIndex);
+        WebElement link = item.findElement(By.tagName("input"));
+        link.click();
+    }
+
 }
