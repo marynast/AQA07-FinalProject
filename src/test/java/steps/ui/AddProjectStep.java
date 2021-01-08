@@ -49,4 +49,11 @@ public class AddProjectStep extends BaseUtil {
                 "Successfully added the new project.",
                 "Project was NOT added");
     }
+
+    @Then("Text {string} is displayed")
+    public void textIsDisplayed(String text) {
+        Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectAddedMessage(),
+                text,
+                "Project was NOT added");
+    }
 }
