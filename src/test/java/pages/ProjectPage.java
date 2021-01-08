@@ -12,17 +12,12 @@ public class ProjectPage extends BasePage {
     private static By SELECT_TEST_CASES_TAB = By.xpath("//li/a[text()='Test Cases']");
     private static By ACTIONS_SECTION = By.xpath("//div[@class='sidebar-h1 top']");
 
-
-
-
     public ProjectPage(BrowserService browserService) {
         super(browserService,false);
     }
 
-
     @Override
     protected void openPage() {
-
     }
 
     @Override
