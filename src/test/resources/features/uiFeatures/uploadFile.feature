@@ -1,8 +1,8 @@
 Feature: Add a test case
 
   Scenario: User uploads a file while creating a new test case
-    Given browser is started
-    And user is logged into TestRail
+    Given Browser is started
+    And User is logged into TestRail
     And "Test project" is created
     And Dashboard page is opened
     When user clicks on project Test project

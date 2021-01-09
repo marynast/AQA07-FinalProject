@@ -1,6 +1,6 @@
 Feature: Password reset
   Scenario: User resets password
-    Given browser is started
+    Given Browser is started
     When user clicks Forgot your password? button
     And user inputs not existing email "marina.int222222@gmail.com" to reset password
     And user clicks Reset Password button

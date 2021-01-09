@@ -4,12 +4,11 @@ import baseEntities.BaseUtil;
 import browserService.BrowserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import models.AddProjectField;
 import org.testng.Assert;
 import pages.AddProjectPage;
 import pages.ProjectsAdministrationPage;
-import support.MyWebDriver;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,9 +39,21 @@ public class AddProjectStep extends BaseUtil {
     }
 
     @Then("The project was created")
-    public void textIsDisplayed(String expectedText) {
+    public void textIsDisplayed() {
+        AddProjectPage addProjectPage = new AddProjectPage(browsersService);
+        addProjectPage.getNameField(browsersService.addProjectField.getName());
+        addProjectPage.getAnnouncementField(browsersService.addProjectField.getAnnouncement());
+        addProjectPage.click(0);
+        addProjectPage.getAddProjectButton().submit();
         Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectAddedMessage(),
-                expectedText,
+                "Successfully added the new project.",
+                "Project was NOT added");
+    }
+
+    @Then("Text {string} is displayed")
+    public void textIsDisplayed(String text) {
+        Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectAddedMessage(),
+                text,
                 "Project was NOT added");
     }
 }

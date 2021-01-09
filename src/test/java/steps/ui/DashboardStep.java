@@ -5,7 +5,6 @@ import browserService.BrowserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import pages.DashboardPage;
-import support.MyWebDriver;
 
 public class DashboardStep extends BaseUtil {
 

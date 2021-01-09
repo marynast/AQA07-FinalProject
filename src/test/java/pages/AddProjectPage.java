@@ -3,22 +3,23 @@ package pages;
 import baseEntities.BasePage;
 import browserService.BrowserService;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import browserService.ReadProperties;
+
+import java.util.List;
 
 public class AddProjectPage extends BasePage {
 
-    private String ENDPOINT = "/index.php?/admin/projects/add";
-    private By PROJECT_NAME = By.id("name");
-    private By ANNOUNCEMENT = By.id("announcement");
-    private By ADD_PROJECT = By.id("accept");
-    private By RADIO_RECOMMENDED = By.xpath("//div[@class='radio']/label/input[@id='suite_mode_single']");
+    private static By NAME_FIELD = By.id("name");
+    private static By ANNOUNCEMENT_FIELD = By.id("announcement");
+    private static By SHOW_ANNOUNCEMENT = By.id("show_announcement");
+    private static By SINGLE_MODE = By.id("suite_mode_single");
+    private static By SINGLE_BASELINE_MODE = By.id("suite_mode_single_baseline");
+    private static By MULTIPLE_MODE = By.id("suite_mode_multi");
+    private static By ADD_PROJECT_BUTTON = By.id("accept");
 
-    public AddProjectPage(BrowserService browserService, boolean openPageByUrl) {
-        super(browserService, openPageByUrl);
+    public AddProjectPage(BrowserService browserService ) {
+        super(browserService, false);
     }
-
 
     @Override
     protected void openPage() {
@@ -29,19 +30,43 @@ public class AddProjectPage extends BasePage {
       return browserService.getWaiters().isElementDisplayed(By.name("name"));
     }
 
-    public WebElement getProjectNameField() {
-        return browserService.getWaiters().getElementBy(PROJECT_NAME);
+    public void getNameField(String name){
+        browserService.getWaiters().getElementBy(NAME_FIELD).sendKeys(name);
     }
 
-    public WebElement getAnnouncementField() {
-        return browserService.getWaiters().getElementBy(ANNOUNCEMENT);
+    public void getAnnouncementField(String announcement){
+        browserService.getWaiters().getElementBy(ANNOUNCEMENT_FIELD).sendKeys(announcement);
     }
 
-    public boolean getRadioButtonRecommended() {
-        return browserService.getWaiters().getElementToBeSelected(RADIO_RECOMMENDED);
+    public WebElement getShowAnnouncement (){
+        return browserService.getWaiters().getElementBy(SHOW_ANNOUNCEMENT);
     }
 
-    public WebElement getAddProjectButton() {
-        return browserService.getWaiters().getElementBy(ADD_PROJECT);
+    public WebElement getSingleMode (){
+        return browserService.getWaiters().getElementBy(SINGLE_MODE);
     }
+
+    public void getSingleBaselineMode(){
+        browserService.getWaiters().getElementBy(SINGLE_BASELINE_MODE);
+    }
+
+    public WebElement getMultipleMode (){
+        return browserService.getWaiters().getElementBy(MULTIPLE_MODE);
+    }
+
+    public WebElement getAddProjectButton (){
+        return browserService.getWaiters().getElementBy(ADD_PROJECT_BUTTON);
+    }
+
+    private WebElement getRow (int rowIndex){
+        List<WebElement> list = browserService.getDriver().findElements(By.cssSelector(".column.project-type"));
+        return list.get(rowIndex);
+    }
+
+    public void click ( int rowIndex){
+        WebElement item = getRow(rowIndex);
+        WebElement link = item.findElement(By.tagName("input"));
+        link.click();
+    }
+
 }
