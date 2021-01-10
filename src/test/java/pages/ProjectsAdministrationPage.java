@@ -25,6 +25,10 @@ public class ProjectsAdministrationPage extends BasePage {
 
     private static By PROJECT_DELETED_MESSAGE = By.xpath("//div[text()='Successfully deleted the project.']");
 
+    private By PROJECT_WITH_251_Characters = By.xpath("//a[text() = '251rper austor nique vitae temous qurm pellentesque " +
+            "nyc npm aliqaam sim it turtor ccnsequat ed parta nybh vinenatis ctas sid " +
+            "ftlis etet relit bliquet sagdttis sd cfnsectetur pueus dt favcibus pulbinar elsmentum intdger enfm ngque vblutpat ic tincrdun']");
+
     public ProjectsAdministrationPage(BrowserService browserService) {
         super(browserService, false);
     }
@@ -52,10 +56,14 @@ public class ProjectsAdministrationPage extends BasePage {
     }
 
     public String getProjectAddedMessage() {
-        return driver.findElement(PROJECT_ADDED_MESSAGE).getText();
+        return browserService.getWaiters().getElementBy(PROJECT_ADDED_MESSAGE).getText();
     }
 
     public String getProjectDeletedMessage() {
         return driver.findElement(PROJECT_DELETED_MESSAGE).getText();
+    }
+
+    public String getCurrentProject(){
+        return browserService.getWaiters().getElementBy(PROJECT_WITH_251_Characters).getText();
     }
 }

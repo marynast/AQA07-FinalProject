@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import models.AddProjectField;
 import org.testng.Assert;
 import pages.AddProjectPage;
+import pages.ProjectPage;
 import pages.ProjectsAdministrationPage;
 
 
@@ -76,5 +77,15 @@ public class AddProjectStep extends BaseUtil {
         Assert.assertEquals(new AddProjectPage(browsersService).getRequiredText().getText(),
                 "Field Name is a required field.",
                 "Project was NOT added");
+    }
+
+    @Then("Project is opened")
+    public void projectIsOpened() {
+        new ProjectPage(browsersService);
+    }
+
+    @Then("The last value is cropped and the project name has {int} characters")
+    public void theLastValueIsCroppedAndTheProjectNameHasCharacters(int characters) {
+        Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getCurrentProject().length(), characters);
     }
 }

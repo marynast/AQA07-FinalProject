@@ -18,7 +18,7 @@ public class DataBaseService {
     }
 
     public void connectionDataBase() {
-        logger.error("Setup JDBC connector");
+        logger.error("Setup DataBase connector");
         String db_URL = properties.getDB() + "://" + properties.getDBHost() + ":" + properties.getDBPort() + "/" + properties.getDBName();
         try {
             Class.forName("org.postgresql.Driver");
