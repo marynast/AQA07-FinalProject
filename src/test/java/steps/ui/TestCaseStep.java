@@ -22,7 +22,7 @@ public class TestCaseStep extends BaseUtil {
         Assert.assertTrue(testCasePage.TestCaseSavedTextIsDisplayed());
     }
 
-    @Step
+    @Step("Check the attachment is displayed")
     @Then("attachment is displayed")
     public void attachmentIsDisplayed() {
         Assert.assertTrue(testCasePage.attachmentIsDisplayed());

@@ -28,7 +28,7 @@ public class ApiStep extends BaseApiStep {
     private String userName;
     private int projectId = 0;
 
-    @Step
+    @Step("Connect to API")
     @Given("api is set up")
     public void apiIsSetUp() {
         properties = new ReadProperties();
@@ -39,7 +39,7 @@ public class ApiStep extends BaseApiStep {
                 .auth().preemptive().basic(properties.getUsername(), properties.getPassword());
     }
 
-    @Step
+    @Step("Get the list of projects (API)")
     @When("admin sends GET request to get the list of Projects")
     public void adminSendsGETRequest() {
         String endpoint = "/index.php?/api/v2/get_projects";
@@ -52,7 +52,7 @@ public class ApiStep extends BaseApiStep {
                         .extract().response().getStatusCode();
     }
 
-    @Step
+    @Step("Get the current user (API)")
     @When("admin sends GET request to get the current user")
     public void adminSendsGETRequestTo() {
         String endpoint = "/index.php?/api/v2/get_current_user";
@@ -65,7 +65,7 @@ public class ApiStep extends BaseApiStep {
                         .extract().jsonPath().get("name");
     }
 
-    @Step
+    @Step("Get all active projects (API)")
     @When("admin sends GET request to get all active projects")
     public void adminSendsGETRequestToGetAllActiveProjects() {
         String endpoint = "/index.php?/api/v2/get_projects&is_completed=0";
@@ -78,7 +78,7 @@ public class ApiStep extends BaseApiStep {
                         .extract().response().getStatusCode();
     }
 
-    @Step
+    @Step("Create a project (API)")
     @When("admin creates a project")
     public void createProject() {
         String endpoint = "index.php?/api/v2/add_project";
@@ -105,7 +105,7 @@ public class ApiStep extends BaseApiStep {
                         .extract().jsonPath().get("id");
     }
 
-    @Step
+    @Step ("Get the project (API)")
     @And("admin gets the project")
     public void getProject() {
         String endpoint = "index.php?/api/v2/get_project/{id}";
@@ -118,19 +118,19 @@ public class ApiStep extends BaseApiStep {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Step
+    @Step ("Get the status code (API)")
     @Then("status code is {int}")
     public void statusCodeIs(int statusCode) {
         Assert.assertEquals(status, statusCode, "Something went wrong");
     }
 
-    @Step
+    @Step ("Check user name (API)")
     @Then("user name equals to {string}")
     public void getCurrentUser(String currentUser) {
         Assert.assertEquals(userName, currentUser, "User name is incorrect");
     }
 
-    @Step
+    @Step ("Delete the project")
     @Then("admin deletes this project")
     public void deleteProject() {
         String endpoint = "index.php?/api/v2/delete_project/{id}";

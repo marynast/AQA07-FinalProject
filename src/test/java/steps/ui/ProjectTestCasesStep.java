@@ -15,7 +15,7 @@ public class ProjectTestCasesStep extends BaseUtil {
         super(browserService);
     }
 
-    @Step
+    @Step("Click ADD TEST CASE button")
     @And("user clicks Add Test Case button")
     public void userClicksAddTestCaseButton() {
         projectTestCasesPage.getAddTestCasesButton().click();

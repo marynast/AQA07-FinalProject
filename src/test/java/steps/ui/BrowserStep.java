@@ -7,6 +7,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
@@ -18,12 +19,14 @@ public class BrowserStep extends BaseUtil {
         super(browserService);
     }
 
+    @Step("Open the browser")
     @Given("Browser is started")
     public void browserIsStarted() {
         browsersService.setupBrowser();
         browsersService.getDriver().get(properties.getURL());
     }
 
+    @Step("Quit the browser")
     @After
     public void tearDown(Scenario scenario) {
         if (browsersService.getDriver() != null) {
