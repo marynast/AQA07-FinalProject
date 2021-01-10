@@ -9,17 +9,13 @@ import browserService.ReadProperties;
 
 public class ProjectsAdministrationPage extends BasePage {
 
-    private String ENDPOINT = "index.php?/admin/projects/overview";
-
     private By DELETE_BUTTON =
-            By.xpath("//tr/td/a[text()='Project by Marina']/../following-sibling::*/following-sibling::*/a" +
-                    "/div[@class='icon-small-delete']");
+            By.xpath("//tr/td/a[text()='Test project']/../following-sibling::*/following-sibling:" +
+                    ":*/a/div[@class='icon-small-delete']");
 
-    private By CHECKBOX_TO_CONFIRM_DELETE = By.xpath("//span[@class='dialog-confirm-busy']/following::*");
+    private By CHECKBOX_TO_CONFIRM_DELETE = By.xpath("//*[@class='icon-progress-inline']/following::input");
 
-    private By OK_DELETE_PROJECT_BUTTON = By.xpath("//div[@id='deleteDialog']/div" +
-            "[@class='button-group dialog-buttons-highlighted']" +
-            "/a[@class='button button-ok button-left button-positive dialog-action-default']");
+    private By OK_DELETE_PROJECT_BUTTON = By.xpath("//*[@class='icon-progress-inline']/following::a[1]");
 
     private By PROJECT_ADDED_MESSAGE = By.xpath("//div[text()='Successfully added the new project.']");
 
@@ -28,6 +24,8 @@ public class ProjectsAdministrationPage extends BasePage {
     private By PROJECT_WITH_251_Characters = By.xpath("//a[text() = '251rper austor nique vitae temous qurm pellentesque " +
             "nyc npm aliqaam sim it turtor ccnsequat ed parta nybh vinenatis ctas sid " +
             "ftlis etet relit bliquet sagdttis sd cfnsectetur pueus dt favcibus pulbinar elsmentum intdger enfm ngque vblutpat ic tincrdun']");
+
+    private static By ALL_PROJECTS_BUTTON = By.id("navigation-sub-projects");
 
     public ProjectsAdministrationPage(BrowserService browserService) {
         super(browserService, false);
@@ -65,5 +63,8 @@ public class ProjectsAdministrationPage extends BasePage {
 
     public String getCurrentProject(){
         return browserService.getWaiters().getElementBy(PROJECT_WITH_251_Characters).getText();
+    }
+    public WebElement getAllProjectsButton (){
+        return browserService.getWaiters().getElementBy(ALL_PROJECTS_BUTTON);
     }
 }

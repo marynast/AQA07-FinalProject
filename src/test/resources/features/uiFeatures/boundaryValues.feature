@@ -14,7 +14,7 @@ Feature: Project name length is 1-250 values
     When  User clicks Add Project button
     * Information about the project in the database, where id = 2
     * User clicks Add Project button in the bottom of the page
-    Then Project is opened
+    Then Text "Successfully added the new project." is displayed
 
   Scenario: Input 2 values into the 'Name' field
     When User clicks Add Project button

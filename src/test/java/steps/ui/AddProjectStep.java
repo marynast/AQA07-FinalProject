@@ -46,9 +46,6 @@ public class AddProjectStep extends BaseUtil {
         addProjectPage.getAnnouncementField(browsersService.addProjectField.getAnnouncement());
         addProjectPage.click(0);
         addProjectPage.getAddProjectButton().submit();
-        Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectAddedMessage(),
-                "Successfully added the new project.",
-                "Project was NOT added");
     }
 
     @Then("Text {string} is displayed")
@@ -77,11 +74,6 @@ public class AddProjectStep extends BaseUtil {
         Assert.assertEquals(new AddProjectPage(browsersService).getRequiredText().getText(),
                 "Field Name is a required field.",
                 "Project was NOT added");
-    }
-
-    @Then("Project is opened")
-    public void projectIsOpened() {
-        new ProjectPage(browsersService);
     }
 
     @Then("The last value is cropped and the project name has {int} characters")
