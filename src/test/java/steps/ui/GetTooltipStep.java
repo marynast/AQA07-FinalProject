@@ -5,6 +5,7 @@ import browserService.BrowserService;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -18,11 +19,13 @@ public class GetTooltipStep extends BaseUtil {
 
     DashboardPage dashboardPage = new DashboardPage(browsersService);
 
+    @Step("Hover the mouse over the text 14 days")
     @When("User hovers the mouse over the text 14 days")
     public void userHoversTheMouseOverTheText() {
         dashboardPage.moveToTooltipButton();
     }
 
+    @Step("Check the expected text is present")
     @Then("Text {string} is present")
     public void text_is_present(String expectedTooltipText) {
         Assert.assertEquals(dashboardPage.getTooltipText(), expectedTooltipText);

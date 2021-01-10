@@ -13,7 +13,7 @@ public abstract class BaseApiStep {
     public ReadProperties properties;
 
     @BeforeTest
-    @Step
+    @Step("Set up API")
     public void setUp() {
         properties = new ReadProperties();
 

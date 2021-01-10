@@ -15,7 +15,7 @@ public class ProjectPageStep extends BaseUtil {
         super(browserService);
     }
 
-    @Step
+    @Step("Select TEST CASES tab")
     @And("user selects TEST CASES TAB")
     public void userSelectsTestCasesTab() {
         projectPage.selectTestCasesTab().click();
