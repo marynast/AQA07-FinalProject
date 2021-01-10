@@ -18,7 +18,6 @@ public class ForgotPasswordPage extends BasePage {
         super(browserService, false);
     }
 
-
     @Override
     protected void openPage() {
     }

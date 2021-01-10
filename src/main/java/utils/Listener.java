@@ -22,17 +22,10 @@ public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test failed");
-
-    }
-
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshot(byte[] screenShot) {
-        return screenShot;
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-
     }
 
     @Override

@@ -26,6 +26,7 @@ public class ProjectsAdministrationPage extends BasePage {
             "ftlis etet relit bliquet sagdttis sd cfnsectetur pueus dt favcibus pulbinar elsmentum intdger enfm ngque vblutpat ic tincrdun']");
 
     private static By ALL_PROJECTS_BUTTON = By.id("navigation-sub-projects");
+    private static By DASHBOARD_BUTTON = By.id("navigation-dashboard");
 
     public ProjectsAdministrationPage(BrowserService browserService) {
         super(browserService, false);
@@ -66,5 +67,9 @@ public class ProjectsAdministrationPage extends BasePage {
     }
     public WebElement getAllProjectsButton (){
         return browserService.getWaiters().getElementBy(ALL_PROJECTS_BUTTON);
+    }
+
+    public WebElement getDashboard (){
+        return browserService.getWaiters().getElementBy(DASHBOARD_BUTTON);
     }
 }

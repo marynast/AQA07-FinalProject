@@ -3,8 +3,10 @@ Feature: Add a test case
   Scenario: User uploads a file while creating a new test case
     Given Browser is started
     And User is logged into TestRail
-    And "Test project" is created
-    And Dashboard page is opened
+    And Information about the project in the database, where id = 7
+    And User clicks Add Project button
+    And The project was created
+    And Administration page is opened and user click button Dashboard
     When user clicks on project Test project
     And user selects TEST CASES TAB
     And user clicks Add Test Case button

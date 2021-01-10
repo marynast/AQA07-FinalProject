@@ -19,7 +19,6 @@ public abstract class BaseUtil {
     public DataBaseService dataBaseService;
     public SQLqueries sqLqueries;
 
-
     public BaseUtil(BrowserService browserService) {
         this.browsersService = browserService;
         properties = new ReadProperties();
