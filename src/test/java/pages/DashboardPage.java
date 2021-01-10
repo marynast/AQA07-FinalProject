@@ -15,6 +15,7 @@ public class DashboardPage extends BasePage {
     private static By TOOLTIP_BUTTON = By.xpath("//a[@class='link link-tooltip']");
     private static By TOOLTIP_TEXT = By.xpath("//a[@tooltip-text='Change the time frame for the chart.']");
     private static By SELECT_PROJECT = By.xpath("//div[@class='summary-title text-ppp']/a[text()='Test project']");
+    private static By ADMINISTRATION_BUTTON = By.id("navigation-admin");
 
     public DashboardPage(BrowserService browserService) {
         super(browserService, false);
@@ -49,6 +50,10 @@ public class DashboardPage extends BasePage {
 
     public WebElement selectProject() {
         return browserService.getWaiters().getElementBy(SELECT_PROJECT);
+    }
+
+    public WebElement getAdministrationButton (){
+        return browserService.getWaiters().getElementBy(ADMINISTRATION_BUTTON);
     }
 
     public void clickSelectedProject() {

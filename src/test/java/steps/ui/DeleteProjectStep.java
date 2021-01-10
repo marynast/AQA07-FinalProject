@@ -2,8 +2,13 @@ package steps.ui;
 
 import baseEntities.BaseUtil;
 import browserService.BrowserService;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+import pages.DashboardPage;
+import pages.ProjectsAdministrationPage;
 
 
 public class DeleteProjectStep extends BaseUtil {
@@ -12,29 +17,35 @@ public class DeleteProjectStep extends BaseUtil {
         super(browserService);
     }
 
-    @Given("{string} is created")
-    public void projectIsCreated(String string) {
-
+    @And("Select an already-existing project")
+    public void selectAnAlreadyExistingProject (){
+        DashboardPage dashboardPage = new DashboardPage(browsersService);
+        dashboardPage.getAdministrationButton().click();
     }
 
-    @Given("Administration Projects page is opened")
-    public void administrationProjectsPageIsOpened() {
-
+    @When("User clicks delete button on the right from the project name")
+    public void userClicksDeleteButtonOnTheRightFromTheProjectName() {
+        ProjectsAdministrationPage projectsAdministrationPage = new ProjectsAdministrationPage(browsersService);
+        projectsAdministrationPage.getAllProjectsButton().click();
+        projectsAdministrationPage.getDeleteProjectButton().click();
     }
 
-    @When("user clicks {string} on the right from the project name")
-    public void userClicksOnTheRightFromTheProjectName(String string) {
-
+    @And("Selects the checkbox")
+    public void selectTheCheckbox (){
+        ProjectsAdministrationPage projectsAdministrationPage = new ProjectsAdministrationPage(browsersService);
+        projectsAdministrationPage.getConfirmDeleteCheckbox().click();
     }
 
-    @When("and selects the checkbox {string}")
-    public void and_selects_the_checkbox(String string) {
-
+    @And("Clicks OK button")
+    public void clicksOkButton (){
+        ProjectsAdministrationPage projectsAdministrationPage = new ProjectsAdministrationPage(browsersService);
+        projectsAdministrationPage.getConfirmDeleteButton().click();
     }
 
-    @When("and clicks {string} button")
-    public void and_clicks_button(String string) {
-
+    @Then("Project successfully deleted")
+    public void projectSuccessfullyDeleted() {
+        Assert.assertEquals(new ProjectsAdministrationPage(browsersService).getProjectDeletedMessage(),
+                "Successfully deleted the project.",
+                "Project was NOT deleted.");
     }
-
 }

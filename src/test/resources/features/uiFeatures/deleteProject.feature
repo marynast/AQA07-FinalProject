@@ -3,9 +3,8 @@ Feature: Delete a project
   Scenario: User deletes an existing project
     Given Browser is started
     * User is logged into TestRail
-    * "Test project" is created
-    * Administration Projects page is opened
-    When user clicks 'delete' on the right from the project name
-    * and selects the checkbox 'Yes, delete this project (cannot be undone)'
-    * and clicks 'OK' button
-    Then Text "Successfully deleted the project." is displayed
+    * Select an already-existing project
+    When User clicks delete button on the right from the project name
+    * Selects the checkbox
+    * Clicks OK button
+    Then Project successfully deleted
