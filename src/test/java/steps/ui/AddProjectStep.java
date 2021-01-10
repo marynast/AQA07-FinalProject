@@ -56,4 +56,25 @@ public class AddProjectStep extends BaseUtil {
                 text,
                 "Project was NOT added");
     }
+
+    @And("User leave field 'Name' empty and clicks Add Project button in the bottom of the page")
+    public void addProjectButtonInTheBottomOfThePage() {
+        AddProjectPage addProjectPage = new AddProjectPage(browsersService);
+        addProjectPage.getAddProjectButton().submit();
+
+    }
+
+    @And("User clicks Add Project button in the bottom of the page")
+    public void addProject (){
+        AddProjectPage addProjectPage = new AddProjectPage(browsersService);
+        addProjectPage.getNameField(browsersService.addProjectField.getName());
+        addProjectPage.getAddProjectButton().submit();
+    }
+
+    @Then("The project was not created")
+    public void projectNotCreated (){
+        Assert.assertEquals(new AddProjectPage(browsersService).getRequiredText().getText(),
+                "Field Name is a required field.",
+                "Project was NOT added");
+    }
 }

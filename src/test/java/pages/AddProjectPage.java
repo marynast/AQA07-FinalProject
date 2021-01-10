@@ -16,6 +16,7 @@ public class AddProjectPage extends BasePage {
     private static By SINGLE_BASELINE_MODE = By.id("suite_mode_single_baseline");
     private static By MULTIPLE_MODE = By.id("suite_mode_multi");
     private static By ADD_PROJECT_BUTTON = By.id("accept");
+    private static By REQUIRED_TEXT = By.xpath("//div[text() = 'Field Name is a required field.']");
 
     public AddProjectPage(BrowserService browserService ) {
         super(browserService, false);
@@ -56,6 +57,10 @@ public class AddProjectPage extends BasePage {
 
     public WebElement getAddProjectButton (){
         return browserService.getWaiters().getElementBy(ADD_PROJECT_BUTTON);
+    }
+
+    public WebElement getRequiredText (){
+        return browserService.getWaiters().getElementBy(REQUIRED_TEXT);
     }
 
     private WebElement getRow (int rowIndex){
