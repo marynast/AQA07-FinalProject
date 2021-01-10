@@ -13,7 +13,7 @@ public class DashboardPage extends BasePage {
 
     private static By ADD_PROJECT_BUTTON = By.id("sidebar-projects-add");
     private static By TOOLTIP_BUTTON = By.xpath("//a[@class='link link-tooltip']");
-    private static By TOOLTIP_TEXT = By.xpath("//a[@tooltip-text='Change the time frame for the chart.']");
+    private static By TOOLTIP_TEXT = By.xpath("//div[@id='tooltip']/p[text()='Change the time frame for the chart.']");
     private static By SELECT_PROJECT = By.xpath("//div[@class='summary-title text-ppp']/a[text()='Test project']");
 
     public DashboardPage(BrowserService browserService) {
@@ -44,6 +44,7 @@ public class DashboardPage extends BasePage {
     }
 
     public String getTooltipText() {
+        moveToTooltipButton();
         return browserService.getWaiters().getElementBy(TOOLTIP_TEXT).getText();
     }
 
