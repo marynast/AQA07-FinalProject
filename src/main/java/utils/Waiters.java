@@ -40,22 +40,6 @@ public class Waiters {
         }
     }
 
-    public WebElement getElementToBeClickable (By by) {
-        try {
-            return webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
-        } catch (TimeoutException ex) {
-            return null;
-        }
-    }
-
-    public boolean getElementToBeSelected (By by) {
-        try {
-            return webDriverWait.until(ExpectedConditions.elementToBeSelected(by));
-        } catch (TimeoutException ex) {
-            return false;
-        }
-    }
-
     public boolean getElementIsNotDisplayed (By by) {
         try {
             return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(by));

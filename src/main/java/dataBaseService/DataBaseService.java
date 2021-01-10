@@ -12,7 +12,6 @@ public class DataBaseService {
     private static Statement statement = null;
     public ReadProperties properties;
 
-
     public DataBaseService() {
         properties = new ReadProperties();
     }

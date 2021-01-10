@@ -21,7 +21,6 @@ public class DashboardPage extends BasePage {
         super(browserService, false);
     }
 
-
     @Override
     protected void openPage() {
     }

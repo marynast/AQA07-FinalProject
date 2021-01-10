@@ -65,7 +65,4 @@ public class BrowserService {
         return waiters;
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
-    }
 }
