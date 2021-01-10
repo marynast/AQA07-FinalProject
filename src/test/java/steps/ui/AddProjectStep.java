@@ -64,6 +64,13 @@ public class AddProjectStep extends BaseUtil {
 
     }
 
+    @And("User clicks Add Project button in the bottom of the page")
+    public void addProject (){
+        AddProjectPage addProjectPage = new AddProjectPage(browsersService);
+        addProjectPage.getNameField(browsersService.addProjectField.getName());
+        addProjectPage.getAddProjectButton().submit();
+    }
+
     @Then("The project was not created")
     public void projectNotCreated (){
         Assert.assertEquals(new AddProjectPage(browsersService).getRequiredText().getText(),
