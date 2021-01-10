@@ -38,6 +38,11 @@ public class DashboardPage extends BasePage {
         return browserService.getWaiters().getElementBy(TOOLTIP_BUTTON);
     }
 
+    public void moveToTooltipButton() {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(getTooltipButton()).build().perform();
+    }
+
     public String getTooltipText() {
         return browserService.getWaiters().getElementBy(TOOLTIP_TEXT).getText();
     }
