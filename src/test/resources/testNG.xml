@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cucumber Test" parallel="classes">
-    <test name="Chrome Test" parallel="classes">
+    <test name="Tests in Chrome" parallel="classes" thread-count="2">
+        <parameter name="browserType" value="chrome"/>
+        <classes>
+            <class name ="RunTest"></class>
+        </classes>
+    </test>
+    <test name="Tests in Firefox" parallel="classes">
+        <parameter name="browserType" value="firefox"/>
         <classes>
             <class name ="RunTest"></class>
         </classes>
