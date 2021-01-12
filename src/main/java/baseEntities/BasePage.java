@@ -13,6 +13,7 @@ public abstract class BasePage {
     protected abstract void openPage();
     public abstract boolean isPageOpened();
 
+
     public BasePage(BrowserService browserService, boolean openPageByUrl) {
         this.browserService = browserService;
         this.driver = browserService.getDriver();
