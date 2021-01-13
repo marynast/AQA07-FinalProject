@@ -18,7 +18,6 @@ import browserService.ReadProperties;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-
 public class ApiStep extends BaseApiStep {
     public ReadProperties properties;
     private String endpoint;

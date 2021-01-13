@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import io.qameta.allure.Step;
 import pages.ProjectTestCasesPage;
 
-
 public class ProjectTestCasesStep extends BaseUtil {
 
     ProjectTestCasesPage projectTestCasesPage = new ProjectTestCasesPage(browsersService);

@@ -6,8 +6,6 @@ import io.cucumber.java.en.And;
 import io.qameta.allure.Step;
 import pages.AddTestCasePage;
 
-
-
 import java.io.File;
 
 public class AddTestCaseStep extends BaseUtil {
