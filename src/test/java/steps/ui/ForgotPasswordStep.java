@@ -8,7 +8,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pages.ForgotPasswordPage;
 
-
 public class ForgotPasswordStep extends BaseUtil {
     public ForgotPasswordStep(BrowserService browserService) {
         super(browserService);

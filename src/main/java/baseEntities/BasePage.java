@@ -1,9 +1,7 @@
 package baseEntities;
 
 import browserService.BrowserService;
-import browserService.ReadProperties;
 import org.openqa.selenium.WebDriver;
-import utils.Waiters;
 
 public abstract class BasePage {
     protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 5;

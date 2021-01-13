@@ -3,7 +3,6 @@ package pages;
 import baseEntities.BasePage;
 import browserService.BrowserService;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 
@@ -19,7 +18,7 @@ public class AddTestCasePage extends BasePage {
     private By FILE_UPLOAD = By.cssSelector("input[type=file]");
     private By SAVE_TEST_CASE_BUTTON = By.id("accept");
     private String basePath = new File("").getAbsolutePath();
-    public String filePath = basePath+"/src/images/1.png";
+    public String filePath = basePath+"/src/test/testData/images/1.png";
 
     public AddTestCasePage(BrowserService browserService) {
         super(browserService, false);

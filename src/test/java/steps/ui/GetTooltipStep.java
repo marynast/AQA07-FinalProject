@@ -2,15 +2,11 @@ package steps.ui;
 
 import baseEntities.BaseUtil;
 import browserService.BrowserService;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import pages.DashboardPage;
-
 
 public class GetTooltipStep extends BaseUtil {
     public GetTooltipStep(BrowserService browserService) {

@@ -3,7 +3,6 @@ package steps.ui;
 import baseEntities.BaseUtil;
 import browserService.BrowserService;
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.qameta.allure.Attachment;
@@ -11,7 +10,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
-
 
 public class BrowserStep extends BaseUtil {
 

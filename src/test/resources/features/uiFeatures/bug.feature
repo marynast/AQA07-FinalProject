@@ -1,4 +1,5 @@
 Feature: Password reset
+
   Scenario: User resets password
     Given Browser is started
     When user clicks Forgot your password? button

@@ -8,7 +8,6 @@ import io.qameta.allure.Step;
 import models.AddProjectField;
 import org.testng.Assert;
 import pages.AddProjectPage;
-import pages.ProjectPage;
 import pages.ProjectsAdministrationPage;
 
 

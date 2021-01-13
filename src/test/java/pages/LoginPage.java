@@ -3,9 +3,7 @@ package pages;
 import baseEntities.BasePage;
 import browserService.BrowserService;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import browserService.ReadProperties;
 
 public class LoginPage extends BasePage {
 

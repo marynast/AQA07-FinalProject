@@ -3,13 +3,10 @@ package baseEntities;
 import browserService.BrowserService;
 import browserService.ReadProperties;
 import dataBaseService.DataBaseService;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 import org.testng.log4testng.Logger;
 import utils.Listener;
-import utils.SQLqueries;
-
-import javax.xml.crypto.Data;
+import utils.SQLQueries;
 
 @Listeners(Listener.class)
 public abstract class BaseUtil {
@@ -17,12 +14,12 @@ public abstract class BaseUtil {
     public BrowserService browsersService;
     public ReadProperties properties;
     public DataBaseService dataBaseService;
-    public SQLqueries sqLqueries;
+    public SQLQueries sqLqueries;
 
     public BaseUtil(BrowserService browserService) {
         this.browsersService = browserService;
         properties = new ReadProperties();
         dataBaseService = new DataBaseService();
-        sqLqueries = new SQLqueries();
+        sqLqueries = new SQLQueries();
     }
 }

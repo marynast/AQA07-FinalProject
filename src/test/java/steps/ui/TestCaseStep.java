@@ -7,7 +7,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pages.TestCasePage;
 
-
 public class TestCaseStep extends BaseUtil {
 
     TestCasePage testCasePage = new TestCasePage(browsersService);
