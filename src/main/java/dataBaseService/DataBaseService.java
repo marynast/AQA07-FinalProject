@@ -6,6 +6,7 @@ import org.testng.log4testng.Logger;
 import java.sql.*;
 
 public class DataBaseService {
+
     public static org.testng.log4testng.Logger logger = Logger.getLogger(DataBaseService.class);
     private static Connection connection = null;
     private static Statement statement = null;

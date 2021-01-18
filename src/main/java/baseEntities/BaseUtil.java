@@ -5,7 +5,6 @@ import browserService.ReadProperties;
 import dataBaseService.DataBaseService;
 import org.testng.annotations.Listeners;
 import org.testng.log4testng.Logger;
-import utils.Listener;
 import utils.SQLQueries;
 
 @Listeners(Listener.class)
