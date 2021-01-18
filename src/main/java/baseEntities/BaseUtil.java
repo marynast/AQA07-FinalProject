@@ -7,7 +7,6 @@ import org.testng.annotations.Listeners;
 import org.testng.log4testng.Logger;
 import utils.SQLQueries;
 
-@Listeners(Listener.class)
 public abstract class BaseUtil {
     public static Logger logger = Logger.getLogger(DataBaseService.class);
     public BrowserService browsersService;
